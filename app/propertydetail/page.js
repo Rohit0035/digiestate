@@ -33,7 +33,6 @@ import NearbyLandmarks from "../../components/propertydsection/NearbyLandmarks";
 // import NearbyLandmarkMap from "../../components/propertydsection/NearbyLandmarkMap";
 import "leaflet/dist/leaflet.css";
 import WonerProperty from "../../components/propertydsection/WonerProperty";
-import VerifiedDigiEstate Groupfrom "../../components/propertydsection/VerifiedSmartMind";
 import ProPriceTrends from "../../components/propertydsection/ProPriceTrends";
 import ProAdsBanner from "../../components/propertydsection/ProAdsBanner";
 import ProAgentsList from "../../components/propertydsection/ProAgentsList";
@@ -219,9 +218,9 @@ const PropertyDetail = () => {
                         </Col>
 
                         {/* verify property DigiEstate Group */}
-                        <Col lg="12">
+                        {/* <Col lg="12">
                             <VerifiedDigiEstate Group/>
-                        </Col>
+                        </Col> */}
 
                         {/* with graph section */}
                         <Col lg="12">
