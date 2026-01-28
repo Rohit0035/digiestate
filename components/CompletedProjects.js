@@ -84,7 +84,7 @@ const CompletedProjects = () => {
         </Col>
         <Col className="text-end">
           <a
-            href="/"
+            href="#"
             className="text-st fw-semibold text-decoration-none"
           >
             View All Projects →

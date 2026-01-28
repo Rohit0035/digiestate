@@ -83,7 +83,7 @@ const OnGoingProjects = () => {
           </h4>
         </Col>
         <Col className="text-end">
-          <a href="/" className="text-st fw-semibold text-decoration-none">
+          <a href="#" className="text-st fw-semibold text-decoration-none">
             View All Projects →
           </a>
         </Col>
