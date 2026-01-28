@@ -1,0 +1,13 @@
+.project-sec{
+    padding-top: 30px;
+    padding-bottom: 50px;
+    background-image: url(../images/build-bg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.project-sec-2{
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    margin-top: -80px;
+    
+}

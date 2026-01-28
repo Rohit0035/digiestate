@@ -1,0 +1,69 @@
+/* 🔴 Unique Namespace: filter-navbar / filter-bottom-bar */
+
+.filter-navbar .dropdown-toggle {
+  background-color: #fff !important;
+  border: 1px solid #ddd !important;
+  transition: all 0.2s ease;
+}
+
+.filter-navbar .dropdown-toggle:hover {
+  border-color: var(--primary) !important;
+}
+
+/* 📱 Bottom Sticky Bar for Mobile */
+.filter-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  z-index: 1050;
+}
+
+.filter-bottom-icon {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--primary);
+  flex: 1;
+}
+
+.filter-bottom-icon small {
+  display: block;
+  font-size: 0.7rem;
+  color: #333;
+}
+
+/* 🧱 Bottom Popover Modal (Slide-Up Look) */
+.filter-modal-bottom .modal-content {
+  border-radius: 16px 16px 0 0;
+  border: none;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.filter-modal-handle {
+  width: 40px;
+  height: 4px;
+  background: #ccc;
+  border-radius: 10px;
+  margin: 0 auto 10px;
+}
+
+/* Hide default close icon on small */
+@media (max-width: 768px) {
+  .filter-navbar {
+    display: none !important;
+  }
+}
