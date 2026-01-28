@@ -9,15 +9,15 @@ const TestimonialsSlider = () => {
 
   const testimonials = [
     {
-      text: "I received good service and all information from SmartMind home loan executive. He helped me at all stages.",
+      text: "I received good service and all information from DigiEstate Grouphome loan executive. He helped me at all stages.",
       name: "Y N CHOUDHARY",
     },
     {
-      text: "SmartMind Home Loan Team provided a good service to get the Home Loan. Multiple options provided with best ROI.",
+      text: "DigiEstate GroupHome Loan Team provided a good service to get the Home Loan. Multiple options provided with best ROI.",
       name: "Suman",
     },
     {
-      text: "It was really very great. I was very happy with the service provided by SmartMind until the sanction of my loan.",
+      text: "It was really very great. I was very happy with the service provided by DigiEstate Groupuntil the sanction of my loan.",
       name: "Madhusudan",
     },
     {

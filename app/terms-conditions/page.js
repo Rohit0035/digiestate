@@ -16,7 +16,7 @@ const TermsConditions = () => {
 
       {/* INTRO */}
       <p>
-        Welcome to <strong>SmartMind Realty Services Limited</strong>.  
+        Welcome to <strong>DigiEstate GroupRealty Services Limited</strong>.  
         By accessing or using our website, mobile app, or any associated services,  
         you agree to comply with the following Terms & Conditions.  
         Please read them carefully.
@@ -109,7 +109,7 @@ const TermsConditions = () => {
         <h4 className="mt-4 fw-semibold">7. Intellectual Property</h4>
         <p>
           All content—logos, images, text, graphics, and code—belong to  
-          <strong>SmartMind Realty Services Limited</strong>.  
+          <strong>DigiEstate GroupRealty Services Limited</strong>.  
           You may not copy, distribute, or reproduce any content without permission.
         </p>
       </div>

@@ -138,7 +138,7 @@ const ProjectDetail = () => {
                                                     id="agreeCheck"
                                                 />
                                                 <label className="form-check-label small" htmlFor="agreeCheck">
-                                                    I Agree to <span className="text-danger">SmartMind Terms of Use</span>
+                                                    I Agree to <span className="text-danger">DigiEstate GroupTerms of Use</span>
                                                 </label>
                                             </div>
 

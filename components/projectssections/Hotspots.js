@@ -33,8 +33,10 @@ const Hotspots = () => {
                         <h4 className="fw-bold mb-0">
                             Hotspots in
                             <span className="text-st">
-                                <Link href="javascript:void(0);" className="text-st ms-1" onClick={toggleModal}>
-                                    Bangalore <FaAngleDown/>
+                                <Link href="javascript:void(0);" className="text-st ms-1" 
+                                //    onClick={toggleModal}
+                                >
+                                    Patna <FaAngleDown/>
                                 </Link>
                             </span>
                         </h4>

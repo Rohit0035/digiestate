@@ -7,28 +7,28 @@ import Image from "next/image";
 const testimonialsData = [
   {
     id: 1,
-    text: "Our group has reached a huge number of people throughout the country through SmartMind . The response is tremendous and we are glad to be a part of your website. Thank you. Keep up the great work and continue helping people find their dream homes",
+    text: "Our group has reached a huge number of people throughout the country through DigiEstate Group. The response is tremendous and we are glad to be a part of your website. Thank you. Keep up the great work and continue helping people find their dream homes",
     name: "Sumeet Sawlani",
     location: "Bhopal",
     img: userimg
   },
   {
     id: 2,
-    text: "SmartMind .com comes across as one of the most organised & informative websites in the country for real estate news, views, trends & much more. Personally I found a rented house within 3 days after searching on the website. The filters are good and the suggestions were very close to what I needed.",
+    text: "DigiEstate Group.com comes across as one of the most organised & informative websites in the country for real estate news, views, trends & much more. Personally I found a rented house within 3 days after searching on the website. The filters are good and the suggestions were very close to what I needed.",
     name: "Rumpa Dutta",
     location: "Delhi",
     img: userimg
   },
   {
     id: 3,
-    text: "I have been using SmartMind .com as an individual since its launch, and as a real estate professional for many years. It has helped give sound advice to aspiring property buyers and allows transparent communication between buyers and sellers.",
+    text: "I have been using DigiEstate Group.com as an individual since its launch, and as a real estate professional for many years. It has helped give sound advice to aspiring property buyers and allows transparent communication between buyers and sellers.",
     name: "Milind Desai",
     location: "Ahmedabad",
     img: userimg
   },
   {
     id: 4,
-    text: "Excellent Portal and very good quality service. SmartMind  is providing great service to everyone looking for real estate. Anyone can easily find the property of their choice. Their support team is also responsive and resolves issues quickly.",
+    text: "Excellent Portal and very good quality service. DigiEstate Group is providing great service to everyone looking for real estate. Anyone can easily find the property of their choice. Their support team is also responsive and resolves issues quickly.",
     name: "Ravindra Chavan",
     location: "Pune",
     img: userimg

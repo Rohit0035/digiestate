@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import aboutimg from "../assets/images/dg/abt-1.jpeg"
-const About = () => {
+const AboutSection = () => {
   return (
     <section className="py-5 bg-light">
       <div className="container">
@@ -56,4 +56,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutSection;

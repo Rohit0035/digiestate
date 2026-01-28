@@ -61,19 +61,19 @@ const menuData = [
   },
   {
     name: "About Us",
-    path: "/loan",
+    path: "/about",
   },
    {
     name: "Services",
-    path: "/project",
+    path: "/",
   },
    {
     name: "Projects",
-    path: "/project",
+    path: "/",
   },
    {
     name: "Blog",
-    path: "/blog",
+    path: "/",
   },
    {
     name: "Contact Us",

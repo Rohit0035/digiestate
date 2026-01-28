@@ -25,11 +25,7 @@ const Projects = () => {
                 <Container>
                     <Row>
                         <Col lg="12">
-                            <h1 className="text-white text-center">SmartMind</h1>
-                            <h1 className="text-white text-center">
-                                Encyclopedia For All New Projects
-                            </h1>
-                            <h5 className="text-white text-center">In <span><Link onClick={toggleModal} href="javascript:void(0);" className="text-white">Bangalore <FaAngleDown /></Link></span></h5>
+                            <h1 className="text-white text-center">DigiEstate Group Projects</h1>
                         </Col>
                     </Row>
                     {/* hero grid */}

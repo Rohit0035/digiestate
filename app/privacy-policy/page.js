@@ -16,7 +16,7 @@ const PrivacyPolicy = () => {
 
       {/* INTRO */}
       <p>
-        Welcome to <strong>SmartMind Realty Services Limited</strong>.  
+        Welcome to <strong>DigiEstate GroupRealty Services Limited</strong>.  
         We value your trust and are committed to protecting your personal information.  
         This Privacy Policy explains how your data is collected, used, stored, 
         and safeguarded when you use our website, mobile app, or any associated services.

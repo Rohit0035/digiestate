@@ -15,7 +15,7 @@ const ProjectListing = () => {
         <>
             <Container className="py-5">
                 <Row>
-                    <Col lg="12" className="">
+                    {/* <Col lg="12" className="">
                         <div className="">
                             <Link href="/property" className="btn btn-danger btn-sm border-bottom me-2 mb-2 ">
                                 Properties <span>(19,716)</span>
@@ -30,8 +30,8 @@ const ProjectListing = () => {
                     </Col>
                     <Col lg="12">
                         <h3 className=" pt-4 ">19837 results | Flats for Rent in Bangalore</h3>
-                    </Col>
-                    <ProjectFilter />
+                    </Col> */}
+                    {/* <ProjectFilter /> */}
                     <Col xs="12" sm="12" md="12" lg="12" className="mt-4">
                         <ProjectCard />
                         <ProjectCard />

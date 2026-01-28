@@ -9,8 +9,8 @@ import "yet-another-react-lightbox/styles.css";
 import ClientLayout from "./ClientLayout"; 
 
 export const metadata = {
-  title: "SmartMind",
-  description: "SmartMind official website",
+  title: "DigiEstate Group",
+  description: "Digi Estate Group is a trusted real estate and property consulting firm delivering reliable solutions with transparency, innovation, and integrity.",
 };
 
 export default function RootLayout({ children }) {

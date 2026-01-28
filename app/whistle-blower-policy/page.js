@@ -16,7 +16,7 @@ const WhistleBlowerPolicy = () => {
 
       {/* INTRO */}
       <p>
-        <strong>SmartMind Realty Services Limited</strong> is committed to maintaining
+        <strong>DigiEstate GroupRealty Services Limited</strong> is committed to maintaining
         the highest standards of ethics, integrity, and transparency.  
         This Whistle Blower Policy provides a safe and confidential platform
         for employees, partners, customers, and stakeholders to report

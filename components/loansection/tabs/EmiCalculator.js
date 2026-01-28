@@ -71,7 +71,7 @@ const EmiCalculator = () => {
                         <Col md={6} className="p-3">
                             <div style={{ marginBottom: 12 }}>
                                 <strong style={{ color: primaryColor, fontSize: 22 }}>
-                                    SmartMind <span style={{ color: secondaryColor }}>Loans</span>
+                                    DigiEstate Group<span style={{ color: secondaryColor }}>Loans</span>
                                 </strong>
                             </div>
                             <div style={{ maxWidth: 420 }}>

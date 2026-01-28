@@ -93,7 +93,7 @@ const LoanHero = () => {
                                 </Button>
 
                                 <p className="mt-3 small text-center text-muted">
-                                    By continuing, I agree to SmartMind T&C
+                                    By continuing, I agree to DigiEstate GroupT&C
                                 </p>
                             </Form>
                         </div>

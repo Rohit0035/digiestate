@@ -83,7 +83,7 @@ const FreshProperties = () => {
           </h4>
         </Col>
         <Col className="text-end">
-          <a href="/property" className="text-st fw-semibold text-decoration-none">
+          <a href="/" className="text-st fw-semibold text-decoration-none">
             View All Upcoming Projects →
           </a>
         </Col>

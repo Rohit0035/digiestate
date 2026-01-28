@@ -84,7 +84,7 @@ const HeroGrid = () => {
                       />
                     </div>
                     <Link href="#" className="text-decoration-none text-dark">
-                      <h5 className="mb-0">Updated Project Reports from</h5>
+                      <h5 className="mb-0 small">Updated Project Reports from</h5>
                       <h5 className="fw-bold text-danger">RERA</h5>
                     </Link>
                   </CardBody>

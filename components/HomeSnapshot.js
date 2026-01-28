@@ -81,7 +81,7 @@ const HomeSnapshot = () => {
               Post your Property for <span className="fw-bold fst-italic">free</span>
             </h5>
             <p className="mb-0 text-muted" style={{ fontSize: "15px" }}>
-              List it on SmartMind and get genuine leads
+              List it on DigiEstate Groupand get genuine leads
             </p>
           </Col>
           <Col md="4" className="text-md-end text-center">

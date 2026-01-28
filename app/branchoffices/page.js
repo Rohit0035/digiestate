@@ -14,7 +14,7 @@ const branches = [
     addressPerson1: "Mr. Mitesh Patel",
     addressPerson2: "Mr. Abhishek Kumar (For Owner Enquiry)",
     fullAddress:
-      "SmartMind Realty Services Limited, The Times Of India Building, 49, Punit Nagar, Opp. Vaccine Ground, Old Padra Road",
+      "DigiEstate GroupRealty Services Limited, The Times Of India Building, 49, Punit Nagar, Opp. Vaccine Ground, Old Padra Road",
     phone1: "9998975632",
     phone2: "07876400400",
     email1: "mitesh.patel@magicbricks.com",
@@ -81,7 +81,7 @@ const BranchOffices = () => {
         {/* Title */}
         <Row>
           <Col>
-            <h3 className="fw-bold mb-3">SmartMind Branch Offices</h3>
+            <h3 className="fw-bold mb-3">DigiEstate GroupBranch Offices</h3>
           </Col>
         </Row>
 

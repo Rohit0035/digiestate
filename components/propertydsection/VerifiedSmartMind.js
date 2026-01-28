@@ -9,7 +9,7 @@ import proimg from "../../assets/images/pro-1.jpg";
 import Link from "next/link";
 import EnquiryModal from "../EnquiryModal";
 
-const VerifiedSmartMind = () => {
+const VerifiedDigiEstate Group= () => {
     const swiperRef = useRef(null);
 
     const [modal, setModal] = useState(false);

@@ -13,15 +13,16 @@ import HomePropertyOptions from "../../components/HomePropertyOptions";
 import RecommendedSection from "../../components/RecommendedSection";
 import AgentSection from "../../components/AgentSection";
 import BottomNav from "../../components/bottomnav/FilterMobile";
-import About from "../../components/About";
+import About from "../../components/AboutSection";
 import OnGoingProjects from "../../components/OnGoingProjects";
 import CompletedProjects from "../../components/CompletedProjects";
+import AboutSection from "../../components/AboutSection";
 
 export default function HomeIndex() {
   return (
     <>
        <HeroSection/>
-       <About/>
+        <AboutSection/>
        <HomeStatus/>
        <CompletedProjects/>
        <WhyUsSection/>
