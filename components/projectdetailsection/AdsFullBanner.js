@@ -8,7 +8,7 @@ const AdsFullBanner = () => {
     return (
         <>
 
-            <Card className="mt-5" data-aos="fade-up">
+            <Card className="mt-0 " data-aos="fade-up">
                 <Link href="#" className="w-100">
                     <CardBody>
                         <Image src={banimg} alt="smartmind">

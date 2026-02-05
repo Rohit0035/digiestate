@@ -13,11 +13,11 @@ const Lightbox = dynamic(() => import("yet-another-react-lightbox"), {
 });
 
 // Dummy images (replace with your own)
-import videoImg from "../../assets/images/pro-1.jpg";
-import img1 from "../../assets/images/pro-1.jpg";
-import img2 from "../../assets/images/pro-1.jpg";
-import img3 from "../../assets/images/pro-1.jpg";
-import img4 from "../../assets/images/pro-1.jpg";
+import videoImg from "../../assets/images/dg/pro-2.jpg";
+import img1 from "../../assets/images/dg/pro-2.jpg";
+import img2 from "../../assets/images/dg/pro-2.jpg";
+import img3 from "../../assets/images/dg/pro-2.jpg";
+import img4 from "../../assets/images/dg/pro-2.jpg";
 
 const ImageGrid = () => {
   const [videoModal, setVideoModal] = useState(false);
@@ -36,10 +36,10 @@ const ImageGrid = () => {
               <Image
                 src={videoImg.src}
                 alt="Project Video"
-                width={800}
+                width={100}
                 height={450}
                 className="img-fluid w-100"
-                style={{ objectFit: "cover", height: "100%" }}
+                style={{ objectFit: "cover", height: "400px" }}
               />
 
               {/* Play Button */}

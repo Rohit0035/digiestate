@@ -105,7 +105,7 @@ const Ratings = () => {
                                 View Ratings
                             </Button>
                             <Button className='rounded-pill fw-semibold px-4 shadow-sm btn-sm btn btn-danger'onClick={toggleOffCanvasVisibility}>
-                                View Ratings
+                                Write Ratings
                             </Button>
                         </Col>
                     </Row>

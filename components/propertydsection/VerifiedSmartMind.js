@@ -9,7 +9,7 @@ import proimg from "../../assets/images/pro-1.jpg";
 import Link from "next/link";
 import EnquiryModal from "../EnquiryModal";
 
-const VerifiedDigiEstate Group= () => {
+const VerifiedDigiEstate = () => {
     const swiperRef = useRef(null);
 
     const [modal, setModal] = useState(false);

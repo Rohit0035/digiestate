@@ -18,6 +18,7 @@ import {
   FaMapMarkedAlt,
   FaChartLine,
   FaRegCommentDots,
+  FaBuilding,
 } from "react-icons/fa";
 import { SiSpringsecurity } from "react-icons/si";
 import ProjectAmenitiesOffcanvas from "./ProjectAmenitiesOffcanvas";
@@ -26,97 +27,122 @@ const Amenities = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
+  /* ================= CORE PROJECT STATS ================= */
   const data = [
     {
       id: 1,
-      icon: <FaLock size={30} className="bg-light p-2 rounded-circle text-st" />,
+      icon: (
+        <FaBuilding size={28} className="bg-light p-2 rounded-circle text-st" />
+      ),
       title: "Total Units",
-      value: "400",
+      value: "400+",
     },
     {
       id: 2,
-      icon: <FaTree size={30} className="bg-light p-2 rounded-circle text-st" />,
-      title: "Project Size",
-      value: "25 Acre",
+      icon: (
+        <FaTree size={28} className="bg-light p-2 rounded-circle text-st" />
+      ),
+      title: "Project Area",
+      value: "25 Acres",
     },
     {
       id: 3,
       icon: (
-        <FaCalendarAlt size={30} className="bg-light p-2 rounded-circle text-st" />
+        <FaCalendarAlt
+          size={28}
+          className="bg-light p-2 rounded-circle text-st"
+        />
       ),
-      title: "Launch Date",
-      value: "Jan 2023",
+      title: "Launch Year",
+      value: "2023",
+    },
+    {
+      id: 4,
+      icon: (
+        <FaLock size={28} className="bg-light p-2 rounded-circle text-st" />
+      ),
+      title: "Security",
+      value: "24×7 Gated",
     },
   ];
 
   return (
     <>
-      {/* Main Section */}
-      <Card className="border-0 shadow-sm" data-aos="fade-up">
+      {/* ================= PROJECT HIGHLIGHTS ================= */}
+      <Card className="border-0 shadow-sm rounded-4" data-aos="fade-up">
         <CardBody>
           <Row>
             {data.map((item) => (
-              <Col xs="6" sm="6" md="4" lg="3" className="mb-2" key={item.id}>
-                <Card className="text-center border-0 h-100">
+              <Col xs="6" md="3" className="mb-3" key={item.id}>
+                <Card className="text-center border-0 h-100 bg-white rounded-3 shadow-sm">
                   <CardBody>
                     <div className="mb-2">{item.icon}</div>
                     <p className="small text-muted mb-0">{item.title}</p>
-                    <small>
-                      <strong>{item.value}</strong>
-                    </small>
+                    <strong className="text-dark">{item.value}</strong>
                   </CardBody>
                 </Card>
               </Col>
             ))}
 
-            <Col lg="12" className="mt-3 text-start">
+            <Col lg="12" className="mt-2 text-start">
               <Button
                 color="link"
                 className="text-st p-0 fw-semibold d-inline-flex align-items-center"
                 onClick={toggle}
               >
-                View Amenities (5) <FaArrowCircleRight className="ms-2" />
+                View All Amenities (20+)
+                <FaArrowCircleRight className="ms-2" />
               </Button>
             </Col>
           </Row>
         </CardBody>
       </Card>
 
-      {/* Section 2 */}
-      <Card className="border-0 mt-5 shadow-sm bg-light">
+      {/* ================= TRUST & INSIGHTS SECTION ================= */}
+      <Card
+        className="border-0 mt-5 shadow-sm bg-light rounded-4"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
         <CardBody>
           <h4 className="fw-bold mb-1 text-dark">
-            <SiSpringsecurity size={24} className="text-st me-1" />
-            <span className="text-st">Most Comprehensive </span> & Credible
-            Information
+            <SiSpringsecurity size={24} className="text-st me-2" />
+            <span className="text-st">Digi Estate Verified </span>
+            Insights
           </h4>
-          <small>Insights you won't find anywhere else</small>
+          <small className="text-muted">
+            Transparent, data-driven & buyer-first property intelligence
+          </small>
 
-          <Row className="py-3">
-            <Col xs="6" sm="6" md="4" lg="3" className="mb-2">
-              <Card className="feature-card card-lift bg-white border-0 text-center h-100 rounded-3 shadow-sm">
+          <Row className="pt-4">
+            <Col xs="6" md="3" className="mb-3">
+              <Card className="feature-card bg-white border-0 text-center h-100 rounded-3 shadow-sm card-lift">
                 <Link href="#" className="w-100">
                   <CardBody>
-                    <FaSwimmer className="text-st mb-2" />
-                    <p className="small mb-0">Top Amenities</p>
+                    <FaSwimmer size={26} className="text-st mb-2" />
+                    <p className="small fw-semibold mb-0">
+                      Lifestyle Amenities
+                    </p>
                   </CardBody>
                 </Link>
               </Card>
             </Col>
 
-            <Col xs="6" sm="6" md="4" lg="3" className="mb-2">
-              <Card className="feature-card card-pulse bg-white border-0 text-center h-100 rounded-3 shadow-sm">
+            <Col xs="6" md="3" className="mb-3">
+              <Card className="feature-card bg-white border-0 text-center h-100 rounded-3 shadow-sm card-pulse">
                 <Link href="#" className="w-100">
                   <CardBody>
-                    <FaMapMarkedAlt className="text-st mb-2" />
-                    <p className="small mb-0">Nearby Landmarks</p>
+                    <FaMapMarkedAlt size={26} className="text-st mb-2" />
+                    <p className="small fw-semibold mb-0">
+                      Location Advantages
+                    </p>
                   </CardBody>
                 </Link>
               </Card>
             </Col>
 
-            <Col xs="6" sm="6" md="4" lg="3" className="mb-2">
-              <Card className="feature-card card-rotate bg-white position-relative border-0 text-center h-100 rounded-3 shadow-sm">
+            <Col xs="6" md="3" className="mb-3">
+              <Card className="feature-card bg-white position-relative border-0 text-center h-100 rounded-3 shadow-sm card-rotate">
                 <Link href="#" className="w-100">
                   <CardBody>
                     <Badge
@@ -126,19 +152,23 @@ const Amenities = () => {
                     >
                       New
                     </Badge>
-                    <FaChartLine className="text-st mb-2" />
-                    <p className="small mb-0">PropWorth Insights</p>
+                    <FaChartLine size={26} className="text-st mb-2" />
+                    <p className="small fw-semibold mb-0">
+                      Price & ROI Trends
+                    </p>
                   </CardBody>
                 </Link>
               </Card>
             </Col>
 
-            <Col xs="6" sm="6" md="4" lg="3" className="mb-2">
-              <Card className="feature-card card-zoom bg-white border-0 text-center h-100 rounded-3 shadow-sm">
+            <Col xs="6" md="3" className="mb-3">
+              <Card className="feature-card bg-white border-0 text-center h-100 rounded-3 shadow-sm card-zoom">
                 <Link href="#" className="w-100">
                   <CardBody>
-                    <FaRegCommentDots className="text-st mb-2" />
-                    <p className="small mb-0">Project Reviews</p>
+                    <FaRegCommentDots size={26} className="text-st mb-2" />
+                    <p className="small fw-semibold mb-0">
+                      Resident Reviews
+                    </p>
                   </CardBody>
                 </Link>
               </Card>
@@ -147,8 +177,12 @@ const Amenities = () => {
         </CardBody>
       </Card>
 
-      {/* ✅ Use separated Offcanvas Component */}
-      <ProjectAmenitiesOffcanvas isOpen={isOpen} toggle={toggle} data={data} />
+      {/* ================= OFFCANVAS ================= */}
+      <ProjectAmenitiesOffcanvas
+        isOpen={isOpen}
+        toggle={toggle}
+        data={data}
+      />
     </>
   );
 };

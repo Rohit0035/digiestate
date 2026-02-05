@@ -9,7 +9,7 @@ import logo from "../assets/images/logo.png"
 const Footer = () => {
   return (
     <>
-      <footer className="bg-light  pt-5 pb-3 mt-5">
+      <footer className="bg-light  pt-5 pb-3">
         <div className="container">
           <div className="row gy-4">
             {/* About Section */}
@@ -97,7 +97,7 @@ const Footer = () => {
       </footer>
 
       {/* small form */}
-      <SmallForm />
+      {/* <SmallForm /> */}
     </>
 
   );

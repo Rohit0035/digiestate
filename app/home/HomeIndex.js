@@ -12,24 +12,26 @@ import HomeSnapshot from "../../components/HomeSnapshot";
 import HomePropertyOptions from "../../components/HomePropertyOptions";
 import RecommendedSection from "../../components/RecommendedSection";
 import AgentSection from "../../components/AgentSection";
-import BottomNav from "../../components/bottomnav/FilterMobile";
+// import BottomNav from "../../components/bottomnav/FilterMobile";
 import About from "../../components/AboutSection";
 import OnGoingProjects from "../../components/OnGoingProjects";
 import CompletedProjects from "../../components/CompletedProjects";
 import AboutSection from "../../components/AboutSection";
+import NewLaunchShowcase from "../../components/projectssections/NewLaunchShowcase";
 
 export default function HomeIndex() {
   return (
     <>
-       <HeroSection/>
-        <AboutSection/>
-       <HomeStatus/>
-       <CompletedProjects/>
-       <WhyUsSection/>
-       <OnGoingProjects/>
-       <AdsBanner/>
-       <FreshProperties/>
-       <BottomNav/>
+      <HeroSection />
+      <AboutSection />
+      <HomeStatus />
+      <CompletedProjects />
+      <WhyUsSection />
+      <OnGoingProjects />
+      <AdsBanner />
+      <FreshProperties />
+      <NewLaunchShowcase />
+      {/* <BottomNav /> */}
     </>
   );
 }

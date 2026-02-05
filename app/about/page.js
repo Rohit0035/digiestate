@@ -234,30 +234,30 @@ const About = () => {
             {/* ================= COUNTER SECTION ================= */}
             <section className="py-5" style={{ backgroundColor: "#3d7866" }}>
                 <Container>
-                    <Row className="text-center g-4">
+                    <Row className="text-center">
                         {/* Happy Clients */}
-                        <Col md="3" data-aos="fade-up">
+                        <Col lg="3" md="6" sm="6" xs="6" className="mb-2" data-aos="fade-up">
                             <FaSmile className="fs-1 text-white mb-2" />
                             <Counter end={10000} suffix="+" />
                             <p className="text-white">Happy Clients</p>
                         </Col>
 
                         {/* Verified Properties */}
-                        <Col md="3" data-aos="fade-up" data-aos-delay="100">
+                        <Col lg="3" md="6" sm="6" xs="6" className="mb-2" data-aos="fade-up" data-aos-delay="100">
                             <FaHome className="fs-1 text-white mb-2" />
                             <Counter end={1000} suffix="+" />
                             <p className="text-white">Verified Properties</p>
                         </Col>
 
                         {/* Experience */}
-                        <Col md="3" data-aos="fade-up" data-aos-delay="200">
+                        <Col lg="3" md="6" sm="6" xs="6" className="mb-2" data-aos="fade-up" data-aos-delay="200">
                             <FaBriefcase className="fs-1 text-white mb-2" />
                             <Counter end={15} suffix="+" />
                             <p className="text-white">Years Experience</p>
                         </Col>
 
                         {/* Cities */}
-                        <Col md="3" data-aos="fade-up" data-aos-delay="300">
+                        <Col lg="3" md="6" sm="6" xs="6" className="mb-2" data-aos="fade-up" data-aos-delay="300">
                             <FaMapMarkedAlt className="fs-1 text-white mb-2" />
                             <Counter end={5} suffix="+" />
                             <p className="text-white">Cities Covered</p>

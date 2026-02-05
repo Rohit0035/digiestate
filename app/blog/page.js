@@ -6,7 +6,6 @@ import BlogCategorySlider from "../../components/blogsection/BlogCategorySlider"
 import HomeBlogSection from "../../components/blogsection/HomeBlogSection";
 import HomeImprovementSection from "../../components/blogsection/HomeImprovementSection";
 import YoutubeSection from "../../components/blogsection/YoutubeSection";
-import WhatsNewSection from "../../components/blogsection/WhatsNewSection";
 const BlogIndex = () => {
   return (
     <>
@@ -16,7 +15,6 @@ const BlogIndex = () => {
       <HomeBlogSection/>
       <HomeImprovementSection/>
       <YoutubeSection/>
-      <WhatsNewSection/>
     </>
   );
 };

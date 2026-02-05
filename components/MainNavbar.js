@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Navbar,
   NavbarBrand,
@@ -24,20 +25,22 @@ import {
   FaMapMarkerAlt,
   FaFacebook,
   FaInstagram,
-  FaTwitter
+  FaTwitter,
 } from "react-icons/fa";
 import "../assets/styles/navbar.css";
 
-import menuData from "./menuData"; // ✅ Import dynamic menu data
+import menuData from "./menuData";
 import CityPopup from "./CityPopup";
 import Image from "next/image";
-import logo from "../assets/images/logo.png"
+import logo from "../assets/images/logo.png";
+
 export default function MainNavbar() {
+  const router = useRouter();
+
   const [showSidebar, setShowSidebar] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [expandedChild, setExpandedChild] = useState(null);
 
-  // citypopup
   const [modalOpen, setModalOpen] = useState(false);
   const toggleModal = () => setModalOpen(!modalOpen);
 
@@ -58,159 +61,140 @@ export default function MainNavbar() {
     setExpandedChild(expandedChild === child ? null : child);
   };
 
+  /** ✅ SAFE NAVIGATION FUNCTION (FIX) */
+  const navigateTo = (path) => {
+    setShowSidebar(false);
+    setActiveSubmenu(null);
+    setExpandedChild(null);
+    router.push(path);
+  };
+
   const activeMenuData = menuData.find((m) => m.name === activeSubmenu);
 
   return (
     <>
       {/* === Top Header === */}
-      <div className="top-header border-bottom d-none d-sm-block" style={{padding:'8px 0px'}}>
+      <div className="top-header border-bottom d-none d-sm-block" style={{ padding: "8px 0px" }}>
         <div className="container small">
-           <Row>
-               <Col md="6">
-                  <div className="text-start">
-                      <a href="tel:919608498908" className="text-white">+91 9608498908</a>
-                       <a href="mailto:sales@digiestategroup.com" className="text-white ms-2">sales@digiestategroup.com</a>
-                  </div>
-               </Col>
-                <Col md="6">
-                  <div className="text-end">
-                      <a href="#" className="ms-2 text-white">
-                         <FaFacebook/>
-                      </a>
-                       <a href="#" className="ms-2 text-white">
-                         <FaInstagram/>
-                      </a>
-                        <a href="#" className="ms-2 text-white">
-                         <FaTwitter/>
-                      </a>
-                  </div>
-               </Col>
-           </Row>
+          <Row>
+            <Col md="6">
+              <div className="text-start">
+                <a href="tel:919608498908" className="text-white">
+                  +91 9608498908
+                </a>
+                <a href="mailto:sales@digiestategroup.com" className="text-white ms-2">
+                  sales@digiestategroup.com
+                </a>
+              </div>
+            </Col>
+            <Col md="6">
+              <div className="text-end">
+                <a href="#" className="ms-2 text-white"><FaFacebook /></a>
+                <a href="#" className="ms-2 text-white"><FaInstagram /></a>
+                <a href="#" className="ms-2 text-white"><FaTwitter /></a>
+              </div>
+            </Col>
+          </Row>
         </div>
       </div>
 
       {/* === Main Navbar === */}
       <Navbar expand="lg" className="smart-navbar bg-white shadow-sm py-2">
         <div className="container">
-          <div className="">
-            {/* === Mobile Toggle === */}
-            <div className="d-flex align-items-center w-100">
-              <NavbarBrand href="/" className="fw-bold text-white fs-3 d-lg-none">
-                <Image src={logo} alt="smartmind" className="st-logo" />
-              </NavbarBrand>
-              {/* <span className="d-lg-none" style={{ marginTop: '0px' }}>
-                <a href="#" onClick={toggleModal} className="text-st ms-2 me-3" >
-                  <FaMapMarkerAlt size={20} />
-                  <span className="small ms-1 d-none">Bangalore</span>
-                </a>
-              </span> */}
-              <div className="ms-auto right-grid d-flex justify-content-end d-lg-none">
-                <UncontrolledDropdown>
-                  <DropdownToggle caret color="primary" className="rounded-pill btn-danger w-100  btn btn-danger btn-sm px-4 ">
-                    Login
-                  </DropdownToggle>
-                  <DropdownMenu style={{ zIndex: '9999 !important', position: 'absolute !important' }}>
-                    <DropdownItem tag={Link} href="/signup">
-                      Sign Up
-                    </DropdownItem>
+          <div className="d-flex align-items-center w-100">
+            <NavbarBrand href="/" className="d-lg-none">
+              <Image src={logo} alt="logo" className="st-logo" />
+            </NavbarBrand>
+            <div className="ms-auto right-grid d-flex justify-content-end d-lg-none">
+              <UncontrolledDropdown>
+                <DropdownToggle caret color="primary" className="rounded-pill btn-danger w-100  btn btn-danger btn-sm px-4 ">
+                  Login
+                </DropdownToggle>
+                <DropdownMenu style={{ zIndex: '9999 !important', position: 'absolute !important' }}>
+                  <DropdownItem tag={Link} href="/signup">
+                    Sign Up
+                  </DropdownItem>
 
-                    <DropdownItem tag={Link} href="/signin">
-                      Sign In
-                    </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-                <button  className="rounded-pill text-white btn ms-2 btn-sm d-none d-sm-block" style={{ borderRadius: '100px', backgroundColor:'#417867' }}>
-                  Post Property
-                </button>
-              </div>
-              <button
-                className="btn btn-link text-dark d-lg-none fs-5 "
-                onClick={toggleSidebar}
-              >
+                  <DropdownItem tag={Link} href="/signin">
+                    Sign In
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+              <Link href="/postproperty" className="rounded-pill text-white btn ms-2 btn-sm d-none d-sm-block" style={{ borderRadius: '100px', backgroundColor: '#417867' }}>
+                Post Property
+              </Link>
+            </div>
+            <div className="ms-auto d-lg-none">
+              <button className="btn btn-link text-dark fs-5" onClick={toggleSidebar}>
                 <FaBars />
               </button>
             </div>
+          </div>
 
-            {/* === Desktop Menu === */}
-            <Collapse isOpen={true} navbar className="d-none d-lg-flex">
-              <NavbarBrand href="/" className="fw-bold text-white fs-3">
-                <Image src={logo} alt="smartmind" className="st-logo" />
-              </NavbarBrand>
-              {/* <span className="" style={{ marginTop: '0px' }}>
-                <a href="#" onClick={toggleModal} className="text-st ms-2" >
-                  <FaMapMarkerAlt size={14} />
-                  <span className="small ms-1 ">Bangalore</span>
-                </a>
-              </span> */}
-              <Nav className="align-items-center ms-auto me-auto" navbar>
-                {menuData.map((menu) => (
-                  <NavItem key={menu.name} className="smart-megamenu-parent">
-                    <Link
-                      href={menu.path || "#"}
-                      className="nav-link text-dark fw-semibold"
-                    >
-                      {menu.name}
-                      {menu.submenu && <FaChevronDown className="small ms-1" />}
-                    </Link>
+          {/* === Desktop Menu === */}
+          <Collapse isOpen navbar className="d-none d-lg-flex">
+            <NavbarBrand href="/">
+              <Image src={logo} alt="logo" className="st-logo" />
+            </NavbarBrand>
 
-                    {/* === Mega Menu === */}
-                    {menu.submenu && (
-                      <div className="smart-megamenu shadow-sm p-4 bg-white">
-                        <div className="row g-4">
-                          {menu.submenu.map((sub, i) => (
-                            <div key={i} className="col">
-                              <h6 className="fw-bold text-st mb-2">
-                                {sub.title}
-                              </h6>
-                              <ul className="list-unstyled small">
-                                {sub.items.map((item, j) => (
-                                  <li key={j}>
-                                    <Link
-                                      href={item.path || "#"}
-                                      className="text-decoration-none text-dark"
-                                    >
-                                      {item.label}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
+            <Nav className="align-items-center ms-auto me-auto" navbar>
+              {menuData.map((menu) => (
+                <NavItem key={menu.name} className="smart-megamenu-parent">
+                  <Link href={menu.path || "#"} className="nav-link fw-semibold text-dark">
+                    {menu.name}
+                    {menu.submenu && <FaChevronDown className="small ms-1" />}
+                  </Link>
+
+                  {menu.submenu && (
+                    <div className="smart-megamenu shadow-sm p-4 bg-white">
+                      <div className="row g-4">
+                        {menu.submenu.map((sub, i) => (
+                          <div key={i} className="col">
+                            <h6 className="fw-bold text-st mb-2">{sub.title}</h6>
+                            <ul className="list-unstyled small">
+                              {sub.items.map((item, j) => (
+                                <li key={j}>
+                                  <Link href={item.path} className="text-dark text-decoration-none">
+                                    {item.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
                       </div>
-                    )}
-                  </NavItem>
-                ))}
-              </Nav>
+                    </div>
+                  )}
+                </NavItem>
+              ))}
+            </Nav>
+            <div className="ms-auto right-grid d-flex justify-content-end">
+              <UncontrolledDropdown>
+                <DropdownToggle caret color="primary" className="rounded-pill btn-danger w-100  btn btn-danger btn-sm px-4 ">
+                  Login
+                </DropdownToggle>
+                <DropdownMenu style={{ zIndex: '9999 !important', position: 'absolute !important' }}>
+                  <DropdownItem tag={Link} href="/signup">
+                    Sign Up
+                  </DropdownItem>
 
-              <div className="ms-auto right-grid d-flex justify-content-end">
-                <UncontrolledDropdown>
-                  <DropdownToggle caret color="primary" className="rounded-pill btn-danger w-100  btn btn-danger btn-sm px-4 ">
-                    Login
-                  </DropdownToggle>
-                  <DropdownMenu style={{ zIndex: '9999 !important', position: 'absolute !important' }}>
-                    <DropdownItem tag={Link} href="/signup">
-                      Sign Up
-                    </DropdownItem>
+                  <DropdownItem tag={Link} href="/signin">
+                    Sign In
+                  </DropdownItem>
+                </DropdownMenu>
 
-                    <DropdownItem tag={Link} href="/signin">
-                      Sign In
-                    </DropdownItem>
-                  </DropdownMenu>
-
-                  {/* <DropdownMenu style={{ zIndex: '9999' }} className="d-none">
+                {/* <DropdownMenu style={{ zIndex: '9999' }} className="d-none">
                     <DropdownItem>Profile</DropdownItem>
                     <DropdownItem>Settings</DropdownItem>
                     <DropdownItem divider />
                     <DropdownItem>Log out</DropdownItem>
                   </DropdownMenu> */}
-                </UncontrolledDropdown>
-                <button className="rounded-pill text-white btn btn-sm ms-2 px-4 fw-bold d-none d-sm-block" style={{ borderRadius: '100px', backgroundColor:'#417867' }}>
-                  Post Property
-                </button>
-              </div>
-            </Collapse>
-          </div>
+              </UncontrolledDropdown>
+              <Link href="/postproperty" className="rounded-pill text-white btn btn-sm ms-2 px-4 fw-bold d-none d-sm-block" style={{ borderRadius: '100px', backgroundColor: '#417867' }}>
+                Post Property
+              </Link>
+            </div>
+          </Collapse>
         </div>
       </Navbar>
 
@@ -219,17 +203,14 @@ export default function MainNavbar() {
         <div className="sidebar-header d-flex align-items-center justify-content-between p-3 border-bottom">
           {activeSubmenu ? (
             <>
-              <FaArrowLeft
-                onClick={closeSubmenu}
-                className="fs-5 cursor-pointer"
-              />
+              <FaArrowLeft onClick={closeSubmenu} />
               <h6 className="mb-0 fw-bold">{activeSubmenu}</h6>
-              <FaTimes onClick={toggleSidebar} className="fs-5 cursor-pointer" />
+              <FaTimes onClick={toggleSidebar} />
             </>
           ) : (
             <>
               <h5 className="mb-0 fw-bold">Menu</h5>
-              <FaTimes onClick={toggleSidebar} className="fs-5 cursor-pointer" />
+              <FaTimes onClick={toggleSidebar} />
             </>
           )}
         </div>
@@ -243,7 +224,7 @@ export default function MainNavbar() {
                 onClick={() =>
                   menu.submenu
                     ? openSubmenu(menu.name)
-                    : (window.location.href = menu.path)
+                    : navigateTo(menu.path)
                 }
               >
                 {menu.name}
@@ -253,10 +234,10 @@ export default function MainNavbar() {
           </ul>
         </div>
 
-        {/* === Submenu Body === */}
+        {/* === Submenu === */}
         <div className={`submenu-body ${activeSubmenu ? "show" : ""}`}>
           {activeMenuData && (
-            <ul className="list-unstyled mb-0 p-0">
+            <ul className="list-unstyled mb-0">
               {activeMenuData.submenu?.map((sub) => (
                 <li key={sub.title}>
                   <div
@@ -265,8 +246,7 @@ export default function MainNavbar() {
                   >
                     <span>{sub.title}</span>
                     <FaChevronDown
-                      className={`small transition ${expandedChild === sub.title ? "rotate" : ""
-                        }`}
+                      className={`small ${expandedChild === sub.title ? "rotate" : ""}`}
                     />
                   </div>
 
@@ -274,16 +254,16 @@ export default function MainNavbar() {
                     <ul className="list-unstyled ms-3 mt-2 small">
                       {sub.items.map((item, i) => (
                         <li key={i}>
-                          <Link
-                            href={item.path || "#"}
-                            className="text-decoration-none text-dark"
+                          <a
+                            className="text-dark text-decoration-none"
+                            onClick={() => navigateTo(item.path)}
                           >
                             {item.label}
-                          </Link>
+                          </a>
                         </li>
                       ))}
                     </ul>
-                  </Collapse >
+                  </Collapse>
                 </li>
               ))}
             </ul>
@@ -295,9 +275,8 @@ export default function MainNavbar() {
       <div
         className={`smart-sidebar-overlay ${showSidebar ? "show" : ""}`}
         onClick={toggleSidebar}
-      ></div>
+      />
 
-      {/* citypopup */}
       <CityPopup isOpen={modalOpen} toggle={toggleModal} />
     </>
   );

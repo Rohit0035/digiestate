@@ -24,7 +24,7 @@ const SignUpPage = () => {
             className="d-flex justify-content-center align-items-center py-5"
             style={{
                 minHeight: "100vh",
-                backgroundColor: "#f8f9fa",
+                backgroundColor: "#3d7967",
             }}
         >
             <Card

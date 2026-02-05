@@ -104,6 +104,11 @@
     margin-top: 5px;
 }
 
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff !important;
+    background-color: var(--primary-color) !important;
+}
+
 
 @keyframes bounce {
   0%, 100% {

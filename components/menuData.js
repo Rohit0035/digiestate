@@ -63,17 +63,17 @@ const menuData = [
     name: "About Us",
     path: "/about",
   },
-   {
-    name: "Services",
-    path: "/",
-  },
+  //  {
+  //   name: "Services",
+  //   path: "/",
+  // },
    {
     name: "Projects",
-    path: "/",
+    path: "/projects",
   },
    {
     name: "Blog",
-    path: "/",
+    path: "/blog",
   },
    {
     name: "Contact Us",

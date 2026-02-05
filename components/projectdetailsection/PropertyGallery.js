@@ -52,7 +52,7 @@ const PropertyGallery = () => {
     );
 
     return (
-        <section className="pt-5">
+        <section className="pt-0">
             <Card className="border-0 bg-white shadow-sm">
                 <CardBody>
                     {/* Section Header */}

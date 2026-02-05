@@ -5,64 +5,57 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaArrowLeft, FaArrowRight, FaRegImage } from "react-icons/fa";
 import Image from "next/image";
-import proimg from "../assets/images/pro-1.jpg";
+import proimg1 from "../assets/images/dg/pros-1.jpg";
+import proimg2 from "../assets/images/dg/pro-2.jpg";
+import proimg3 from "../assets/images/dg/pro-3.jpg";
+import proimg4 from "../assets/images/dg/pro-4.jpg";
 
 const CompletedProjects = () => {
   const swiperRef = useRef(null);
 
-  // Completed Projects Data (Patna)
-  const projects = [
-    {
-      id: 1,
-      img: proimg,
-      name: "Radha Krishna Apartment",
-      price: "₹42 Lakhs Onwards",
-      size: "3 BHK",
-      location: "Anisabad, Patna",
-      status: "Completed Project",
-      tag: "12",
-    },
-    {
-      id: 2,
-      img: proimg,
-      name: "Baldev Bhawan",
-      price: "₹38 Lakhs Onwards",
-      size: "2 & 3 BHK",
-      location: "Bailey Road, Patna",
-      status: "Delivered",
-      tag: "10",
-    },
-    {
-      id: 3,
-      img: proimg,
-      name: "Anju Sumitra Tower",
-      price: "₹45 Lakhs Onwards",
-      size: "3 BHK",
-      location: "Boring Road, Patna",
-      status: "Completed & Occupied",
-      tag: "14",
-    },
-    {
-      id: 4,
-      img: proimg,
-      name: "Abhinav Enclave",
-      price: "₹40 Lakhs Onwards",
-      size: "2 & 3 BHK",
-      location: "Kankarbagh, Patna",
-      status: "Project Delivered",
-      tag: "9",
-    },
-    {
-      id: 5,
-      img: proimg,
-      name: "Shiv Residency",
-      price: "₹35 Lakhs Onwards",
-      size: "2 BHK",
-      location: "Danapur, Patna",
-      status: "Completed",
-      tag: "8",
-    },
-  ];
+const projects = [
+  {
+    id: 1,
+    img: proimg4,
+    name: "Radha Krishna Apartment",
+    price: "₹42 Lakhs Onwards",
+    size: "3 BHK • 1345 Sqft",
+    location: "Bailey Road, Patna",
+    status: "Completed Project",
+    tag: "RERA Approved",
+  },
+  {
+    id: 2,
+    img: proimg3,
+    name: "Baldev Bhawan",
+    price: "₹38 Lakhs Onwards",
+    size: "2 & 3 BHK",
+    location: "Bailey Road, Patna",
+    status: "Delivered",
+    tag: "Premium",
+  },
+  {
+    id: 3,
+    img: proimg2,
+    name: "Vanasthali Home LLP",
+    price: "₹45 Lakhs Onwards",
+    size: "3 BHK",
+    location: "Boring Road, Patna",
+    status: "Completed & Occupied",
+    tag: "Luxury",
+  },
+  {
+    id: 4,
+    img: proimg1,
+    name: "Abhinav Enclave",
+    price: "₹40 Lakhs Onwards",
+    size: "3 BHK • 1606 Sqft",
+    location: "Kankarbagh, Patna",
+    status: "Project Delivered",
+    tag: "RERA",
+  },
+];
+
 
   return (
     <Container className="my-5 position-relative">

@@ -8,19 +8,9 @@ import Amenities from "../../components/projectdetailsection/Amenities";
 import ProjectAbout from "../../components/projectdetailsection/ProjectAbout";
 import Ratings from "../../components/projectdetailsection/Ratings";
 import AdsFullBanner from "../../components/projectdetailsection/AdsFullBanner";
-import NearbySection from "../../components/projectdetailsection/NearbySection";
-import NewLaunchesSection from "../../components/projectdetailsection/NewLaunchesSection";
 import LegalCertificates from "../../components/projectdetailsection/LegalCertificates";
-import PropWorthInsights from "../../components/projectdetailsection/PropWorthInsights";
-import HomeLoanEMICalculator from "../../components/projectdetailsection/HomeLoanEMICalculator";
 import PropertyGallery from "../../components/projectdetailsection/PropertyGallery";
-import AboutWhitefield from "../../components/projectdetailsection/AboutWhitefield";
-import AboutCompanyProject from "../../components/projectdetailsection/AboutCompanyProject";
-import TopAdvertis from "../../components/projectdetailsection/TopAdvertis";
-import SimilarProjects from "../../components/projectdetailsection/SimilarProjects";
-import OtherProjects from "../../components/projectdetailsection/OtherProjects";
 import FaqSection from "../../components/projectdetailsection/FaqSection";
-import PopularStories from "../../components/projectdetailsection/PopularStories";
 const ProjectDetail = () => {
     const [showStickyNav, setShowStickyNav] = useState(false);
 
@@ -77,20 +67,10 @@ const ProjectDetail = () => {
                                 <ProjectAbout />
                                 <Ratings />
                                 <AdsFullBanner />
-                                <NearbySection />
-                                <NewLaunchesSection />
                                 <LegalCertificates />
-                                <PropWorthInsights />
-                                <HomeLoanEMICalculator />
                                 <PropertyGallery />
-                                <AboutWhitefield />
-                                <AboutCompanyProject />
-                                <TopAdvertis />
                                 <AdsFullBanner />
-                                <SimilarProjects />
-                                <OtherProjects/>
                                 <FaqSection/>
-                                <PopularStories/>
                             </div>
                         </Col>
 

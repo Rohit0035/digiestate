@@ -6,62 +6,57 @@ import { Navigation } from "swiper/modules";
 import { FaArrowLeft, FaArrowRight, FaRegImage } from "react-icons/fa";
 import Image from "next/image";
 import proimg from "../assets/images/pro-1.jpg";
+import proimg1 from "../assets/images/dg/pros-1.jpg";
+import proimg2 from "../assets/images/dg/pro-2.jpg";
+import proimg3 from "../assets/images/dg/pro-3.jpg";
+import proimg4 from "../assets/images/dg/pro-4.jpg";
+
 
 const FreshProperties = () => {
   const swiperRef = useRef(null);
 
   // Upcoming / Fresh project data
   const properties = [
-    {
-      id: 1,
-      img: proimg,
-      bhk: "2 & 3 BHK Apartments",
-      price: "₹42 Lakh Onwards",
-      size: "1800  sqft",
-      location: "Whitefield, Bangalore",
-      status: "Upcoming Project",
-      tag: "8",
-    },
-    {
-      id: 2,
-      img: proimg,
-      bhk: "Luxury 3 BHK Flats",
-      price: "₹68 Lakh Onwards",
-      size: "1600 sqft",
-      location: "Sarjapur Road, Bangalore",
-      status: "Launching Soon",
-      tag: "12",
-    },
-    {
-      id: 3,
-      img: proimg,
-      bhk: "Premium 2 BHK Homes",
-      price: "₹55 Lakh Onwards",
-      size: "1200 sqft",
-      location: "Yelahanka, Bangalore",
-      status: "Pre-Launch",
-      tag: "10",
-    },
-    {
-      id: 4,
-      img: proimg,
-      bhk: "Smart Studio Apartments",
-      price: "₹35 Lakh Onwards",
-      size: "650 sqft",
-      location: "Electronic City, Bangalore",
-      status: "Upcoming Project",
-      tag: "6",
-    },
-    {
-      id: 5,
-      img: proimg,
-      bhk: "Premium 3 BHK Residences",
-      price: "₹78 Lakh Onwards",
-      size: "1750 sqft",
-      location: "Hebbal, Bangalore",
-      status: "Launching Soon",
-      tag: "14",
-    },
+   {
+    id: 1,
+    img: proimg4,
+    name: "Radha Krishna Apartment",
+    price: "₹42 Lakhs Onwards",
+    size: "3 BHK • 1345 Sqft",
+    location: "Bailey Road, Patna",
+    status: "Completed Project",
+    tag: "RERA Approved",
+  },
+  {
+    id: 2,
+    img: proimg3,
+    name: "Baldev Bhawan",
+    price: "₹38 Lakhs Onwards",
+    size: "2 & 3 BHK",
+    location: "Bailey Road, Patna",
+    status: "Delivered",
+    tag: "Premium",
+  },
+  {
+    id: 3,
+    img: proimg2,
+    name: "Vanasthali Home LLP",
+    price: "₹45 Lakhs Onwards",
+    size: "3 BHK",
+    location: "Boring Road, Patna",
+    status: "Completed & Occupied",
+    tag: "Luxury",
+  },
+  {
+    id: 4,
+    img: proimg1,
+    name: "Abhinav Enclave",
+    price: "₹40 Lakhs Onwards",
+    size: "3 BHK • 1606 Sqft",
+    location: "Kankarbagh, Patna",
+    status: "Project Delivered",
+    tag: "RERA",
+  },
   ];
 
   return (

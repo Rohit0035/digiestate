@@ -6,63 +6,58 @@ import { Navigation } from "swiper/modules";
 import { FaArrowLeft, FaArrowRight, FaRegImage } from "react-icons/fa";
 import Image from "next/image";
 import proimg from "../assets/images/pro-1.jpg";
+import proimg1 from "../assets/images/dg/pros-1.jpg";
+import proimg2 from "../assets/images/dg/pro-2.jpg";
+import proimg3 from "../assets/images/dg/pro-3.jpg";
+import proimg4 from "../assets/images/dg/pro-4.jpg";
+
 
 const OnGoingProjects = () => {
   const swiperRef = useRef(null);
 
   // Ongoing project data
-  const properties = [
-    {
-      id: 1,
-      img: proimg,
-      bhk: "2 & 3 BHK Apartments",
-      price: "₹45 Lakh Onwards",
-      size: "1050 - 1450 sqft",
-      location: "Vijay Nagar, Indore",
-      status: "Under Construction",
-      tag: "12",
-    },
-    {
-      id: 2,
-      img: proimg,
-      bhk: "3 BHK Premium Flats",
-      price: "₹62 Lakh Onwards",
-      size: "1550 sqft",
-      location: "Super Corridor, Indore",
-      status: "Ongoing Project",
-      tag: "15",
-    },
-    {
-      id: 3,
-      img: proimg,
-      bhk: "2 BHK Smart Homes",
-      price: "₹38 Lakh Onwards",
-      size: "980 sqft",
-      location: "Palasia, Indore",
-      status: "Under Construction",
-      tag: "10",
-    },
-    {
-      id: 4,
-      img: proimg,
-      bhk: "Luxury 3 BHK Flats",
-      price: "₹75 Lakh Onwards",
-      size: "1650 sqft",
-      location: "AB Road, Indore",
-      status: "Ongoing Project",
-      tag: "18",
-    },
-    {
-      id: 5,
-      img: proimg,
-      bhk: "Affordable 2 BHK Homes",
-      price: "₹32 Lakh Onwards",
-      size: "900 sqft",
-      location: "Rau, Indore",
-      status: "Under Construction",
-      tag: "8",
-    },
-  ];
+ const projects = [
+  {
+    id: 1,
+    img: proimg4,
+    name: "Radha Krishna Apartment",
+    price: "₹42 Lakhs Onwards",
+    size: "3 BHK • 1345 Sqft",
+    location: "Bailey Road, Patna",
+    status: "Completed Project",
+    tag: "RERA Approved",
+  },
+  {
+    id: 2,
+    img: proimg3,
+    name: "Baldev Bhawan",
+    price: "₹38 Lakhs Onwards",
+    size: "2 & 3 BHK",
+    location: "Bailey Road, Patna",
+    status: "Delivered",
+    tag: "Premium",
+  },
+  {
+    id: 3,
+    img: proimg2,
+    name: "Vanasthali Home LLP",
+    price: "₹45 Lakhs Onwards",
+    size: "3 BHK",
+    location: "Boring Road, Patna",
+    status: "Completed & Occupied",
+    tag: "Luxury",
+  },
+  {
+    id: 4,
+    img: proimg1,
+    name: "Abhinav Enclave",
+    price: "₹40 Lakhs Onwards",
+    size: "3 BHK • 1606 Sqft",
+    location: "Kankarbagh, Patna",
+    status: "Project Delivered",
+    tag: "RERA",
+  },
+];
 
   return (
     <Container className="my-5 position-relative">
@@ -110,7 +105,7 @@ const OnGoingProjects = () => {
           1200: { slidesPerView: 4 },
         }}
       >
-        {properties.map((prop, index) => (
+        {projects.map((prop, index) => (
           <SwiperSlide key={prop.id}>
             <div data-aos="zoom-in" data-aos-delay={index * 100}>
               <Card className="border shadow-sm h-100">
@@ -162,3 +157,6 @@ const OnGoingProjects = () => {
 };
 
 export default OnGoingProjects;
+
+
+

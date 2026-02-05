@@ -27,7 +27,7 @@ const LegalCertificates = () => {
             <Card className="border-0 bg-light p-3" data-aos="fade-up">
                 <h5 className="fw-bold mb-1 d-flex align-items-center">
                     <FaFileAlt className="me-2 text-danger" /> Legal Certificates{" "}
-                    <span className="badge bg-danger ms-2">Only on MB</span>
+                    <span className="badge bg-danger ms-2">Only on DigiEstate</span>
                 </h5>
                 <p className="text-muted small mb-0">
                     Last Updated 22 Aug’25 | Approved by RERA - With PRM/KA/RERA/1251/446/PR/051022/007735
@@ -149,14 +149,7 @@ const LegalCertificates = () => {
                     </div>
                 </CardBody>
             </Card>
-
-            {/* Footer */}
-            <div className="text-danger fw-bold small mt-3">
-                <Link href="#" className="text-st ">
-                    Sumadhura Capitol Residences RERA Details →
-
-                </Link>
-            </div>
+        
         </section>
     );
 };

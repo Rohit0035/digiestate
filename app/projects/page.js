@@ -2,17 +2,15 @@
 import { useState } from "react";
 import { Col, Container, Row } from "reactstrap";
 import "../../assets/styles/project.css"
-import Link from "next/link";
-import { FaAngleDown } from "react-icons/fa";
 import CityPopup from "../../components/CityPopup";
 import HeroGrid from "../../components/projectssections/HeroGrid";
 import Hotspots from "../../components/projectssections/Hotspots";
 import ProjectListing from "../../components/projectssections/ProjectListing";
-import NewLaunchShowcase from "../../components/projectssections/NewLaunchShowcase";
-import PropertyCard from "../../components/PropertyCard";
 import ProjectCard from "../../components/projectssections/ProjectCard";
 import ExploreProjects from "../../components/projectssections/ExploreProjects";
 import ExplorePossession from "../../components/projectssections/ExplorePossession";
+import ProjectListingCompleted from "../../components/projectssections/ProjectListingCompleted";
+import OngoingProjectList from "../../components/projectssections/OngoingProjectList";
 const Projects = () => {
 
     // citypopup
@@ -36,15 +34,8 @@ const Projects = () => {
             <section className="project-sec-2 bg-light pb-0">
                 <Container>
                     <Hotspots />
-                    <ProjectListing />
-                    <NewLaunchShowcase />
-                    <ProjectCard />
-                    <ExploreProjects />
-                    <ProjectCard />
-                    <ProjectCard />
-                    <ExplorePossession />
-                    <ProjectCard />
-                    <ProjectCard />
+                    <ProjectListingCompleted />
+                    <OngoingProjectList/>
                 </Container>
             </section>
 
