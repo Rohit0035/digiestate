@@ -104,6 +104,13 @@
     margin-top: 5px;
 }
 
+
+.active > .page-link, .page-link.active {
+    color: var(--bs-pagination-active-color);
+    background-color: #f49711 !important;
+    border-color: #f49711;
+}
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff !important;
     background-color: var(--primary-color) !important;

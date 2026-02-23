@@ -47,38 +47,7 @@ const BlogListSection = () => {
     );
 
     return (
-        <div className="py-5">
-
-            {/* ---------------- FILTER ROW ---------------- */}
-            <div className="d-flex align-items-center mb-4">
-                <span className="fw-semibold me-3">Filter by</span>
-
-                <div
-                    className="d-flex gap-2 overflow-auto"
-                    style={{ whiteSpace: "nowrap", paddingBottom: "5px" }}
-                >
-                    {filters.map((item) => (
-                        <Badge
-                            key={item}
-                            pill
-                            onClick={() => {
-                                setActiveFilter(item === activeFilter ? null : item);
-                                setCurrentPage(1);
-                            }}
-                            className="px-3 py-2 text-white"
-                            style={{
-                                cursor: "pointer",
-                                fontSize: "14px",
-                                background:
-                                    activeFilter === item ? "#dc3545" : "#f1f1f1",
-                                color: activeFilter === item ? "#fff" : "#333",
-                            }}
-                        >
-                            {item}
-                        </Badge>
-                    ))}
-                </div>
-            </div>
+        <div className="pb-5 pt-0">
 
             {/* ---------------- CARD LIST ---------------- */}
             <Row className="gy-4">

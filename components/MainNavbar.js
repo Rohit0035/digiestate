@@ -169,7 +169,7 @@ export default function MainNavbar() {
               ))}
             </Nav>
             <div className="ms-auto right-grid d-flex justify-content-end">
-              <UncontrolledDropdown>
+              {/* <UncontrolledDropdown>
                 <DropdownToggle caret color="primary" className="rounded-pill btn-danger w-100  btn btn-danger btn-sm px-4 ">
                   Login
                 </DropdownToggle>
@@ -183,13 +183,13 @@ export default function MainNavbar() {
                   </DropdownItem>
                 </DropdownMenu>
 
-                {/* <DropdownMenu style={{ zIndex: '9999' }} className="d-none">
+                <DropdownMenu style={{ zIndex: '9999' }} className="d-none">
                     <DropdownItem>Profile</DropdownItem>
                     <DropdownItem>Settings</DropdownItem>
                     <DropdownItem divider />
                     <DropdownItem>Log out</DropdownItem>
-                  </DropdownMenu> */}
-              </UncontrolledDropdown>
+                  </DropdownMenu> 
+              </UncontrolledDropdown> */}
               <Link href="/postproperty" className="rounded-pill text-white btn btn-sm ms-2 px-4 fw-bold d-none d-sm-block" style={{ borderRadius: '100px', backgroundColor: '#417867' }}>
                 Post Property
               </Link>

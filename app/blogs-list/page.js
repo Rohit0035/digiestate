@@ -18,9 +18,9 @@ const BlogCategory = () => {
                             <Card className="bg-light border-0">
                                 <CardBody>
                                     <h4 className="fw-bold mb-3">
-                                        Read the Ultimate Guide for Real Estate Queries
+                                        Real Estate News
                                     </h4>
-                                    <BlogCateHero />
+                                    {/* <BlogCateHero /> */}
                                     <BlogListSection />
 
                                 </CardBody>
@@ -28,7 +28,7 @@ const BlogCategory = () => {
                         </Col>
                         <Col lg="3">
                             <BlogTrendingList />
-                            <QuickLinks />
+                            {/* <QuickLinks /> */}
                             <PopularBlogs/>
                         </Col>
                     </Row>

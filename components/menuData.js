@@ -73,7 +73,7 @@ const menuData = [
   },
    {
     name: "Blog",
-    path: "/blog",
+    path: "/blogs-list",
   },
    {
     name: "Contact Us",
