@@ -18,7 +18,7 @@ const projects = [
     size: "3 BHK • 1345 Sqft",
     location: "Bailey Road, Patna",
     status: "Completed Project",
-    tag: "RERA Approved",
+    tag: "RERA Approved"
   },
   {
     id: 2,
@@ -28,41 +28,11 @@ const projects = [
     size: "2 & 3 BHK",
     location: "Bailey Road, Patna",
     status: "Delivered",
-    tag: "Premium",
-  },
-  {
-    id: 3,
-    img: proimg2,
-    name: "Vanasthali Home LLP",
-    price: "₹45 Lakhs Onwards",
-    size: "3 BHK",
-    location: "Boring Road, Patna",
-    status: "Completed & Occupied",
-    tag: "Luxury",
-  },
-  {
-    id: 4,
-    img: proimg1,
-    name: "Abhinav Enclave",
-    price: "₹40 Lakhs Onwards",
-    size: "3 BHK • 1606 Sqft",
-    location: "Kankarbagh, Patna",
-    status: "Project Delivered",
-    tag: "RERA",
-  },
-  {
-    id: 5,
-    img: proimg2,
-    name: "Shivam Residency",
-    price: "₹36 Lakhs Onwards",
-    size: "2 & 3 BHK • 1180–1450 Sqft",
-    location: "Rajendra Nagar, Patna",
-    status: "Under Construction",
-    tag: "New Launch",
-  },
+    tag: "Premium"
+  }
 ];
 
-const OngoingProjectList = () => {
+const OngoingProjectList = ({ ongoingProjects = [] }) => {
   return (
     <Container className="py-5">
       <Row>
@@ -71,9 +41,9 @@ const OngoingProjectList = () => {
         </Col>
 
         <Col lg="12">
-          {projects.map((project) => (
+          {ongoingProjects.map(project =>
             <ProjectCard key={project.id} project={project} />
-          ))}
+          )}
         </Col>
       </Row>
     </Container>

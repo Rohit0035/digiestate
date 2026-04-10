@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    appDir: true,
+    appDir: true
   },
-  output: "export", 
+  // output: "export",
   images: {
-    unoptimized: true, 
+    unoptimized: true
   }
 };
 

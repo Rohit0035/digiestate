@@ -1,194 +1,306 @@
-import React, { useState } from 'react';
-import { Offcanvas, OffcanvasBody, OffcanvasHeader, Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap';
-import { FaStar } from 'react-icons/fa'; // Importing star icon from react-icons
+import React, { useState } from "react";
+import {
+  Offcanvas,
+  OffcanvasBody,
+  OffcanvasHeader,
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Row,
+  Col,
+  Spinner,
+  FormFeedback
+} from "reactstrap";
+import { FaStar } from "react-icons/fa";
+import { submitReview } from "../../lib/api";
 
-const RatingWriteOffCanvas = ({ isVisible, onToggleVisibility, onFeedbackSubmit }) => {
-    const [selectedRating, setSelectedRating] = useState(0); // Stores the selected rating
-    const [userComment, setUserComment] = useState(''); // Stores the comment entered by the user
-    const [ratingCategory, setRatingCategory] = useState({
-        waterSupply: 0,
-        mainElectricity: 0,
-        powerBackup: 0,
-        sewageHandling: 0,
-        sportsFacility: 0,
-        parkingFacility: 0,
-        gardenGreenery: 0,
-        shopsWithinPremises: 0,
-        constructionQuality: 0,
-        commonAreaMaintenance: 0,
-        availabilityOfService: 0,
-        security: 0,
-    });
+const RatingWriteOffCanvas = ({ isVisible, onToggleVisibility, projectId }) => {
+  const initialRatings = {
+    waterSupply: 1,
+    mainElectricity: 1,
+    powerBackup: 1,
+    sewageHandling: 1,
+    sportsFacility: 1,
+    parkingFacility: 1,
+    gardenGreenery: 1,
+    shopsWithinPremises: 1,
+    constructionQuality: 1,
+    commonAreaMaintenance: 1,
+    availabilityOfService: 1,
+    security: 1
+  };
 
-    const handleRatingSelection = (category, value) => {
-        setRatingCategory({ ...ratingCategory, [category]: value });
-    };
+  const [loading, setLoading] = useState(false);
+  const [reviewerName, setReviewerName] = useState("");
+  const [reviewerEmail, setReviewerEmail] = useState("");
+  const [reviewerMobile, setReviewerMobile] = useState("");
 
-    const handleCommentInputChange = (e) => {
-        setUserComment(e.target.value);
-    };
+  const [title, setTitle] = useState("");
+  const [reviewerType, setReviewerType] = useState("");
+  const [userComment, setUserComment] = useState("");
+  const [ratingCategory, setRatingCategory] = useState(initialRatings);
+  const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState({});
 
-    const submitUserFeedback = () => {
-        onFeedbackSubmit(ratingCategory, userComment);
-        onToggleVisibility();
-    };
+  const handleRatingSelection = (category, value) => {
+    setRatingCategory({ ...ratingCategory, [category]: value });
+  };
 
-    const renderRatingStars = (category) => {
-        let stars = [];
-        for (let i = 1; i <= 5; i++) {
-            stars.push(
-                <FaStar
-                    key={i}
-                    className={`me-1 ${i <= ratingCategory[category] ? 'text-warning' : 'text-muted'}`}
-                    onClick={() => handleRatingSelection(category, i)}
-                    style={{ cursor: 'pointer' }}
-                />
-            );
-        }
-        return stars;
-    };
-
-    return (
-        <Offcanvas isOpen={isVisible} toggle={onToggleVisibility} direction="end" className='w-75'>
-            <OffcanvasHeader toggle={onToggleVisibility}>Rate Your Experience</OffcanvasHeader>
-            <OffcanvasBody>
-                <Form>
-                    <Row>
-                        <Col xs="12" sm="12" md="6" lg="4">
-                            <div className="mb-3 border p-2">
-                                <h5>Project Infrastructure</h5>
-                                <div className='small  d-flex justify-content-between'>
-                                    <Label>Water Supply</Label>
-                                    <span>
-                                        {renderRatingStars('waterSupply')}
-                                    </span>
-                                </div>
-                                <div className='small  d-flex justify-content-between'>
-                                    <Label>Main Electricity</Label>
-                                    <span>
-                                        {renderRatingStars('mainElectricity')}
-                                    </span>
-                                </div>
-                                <div className='small  d-flex justify-content-between'>
-                                    <Label>Power Backup</Label>
-                                    <span>
-                                        {renderRatingStars('powerBackup')}
-                                    </span>
-                                </div>
-                                <div className='small  d-flex justify-content-between'>
-                                    <Label>Sewage Handling</Label>
-                                    <span>
-                                        {renderRatingStars('sewageHandling')}
-                                    </span>
-                                </div>
-                            </div>
-                        </Col>
-                        <Col xs="12" sm="12" md="6" lg="4">
-                            <div className="mb-3 border p-2">
-                                <h5>Project Amenities</h5>
-                                <div className='small  d-flex justify-content-between' >
-                                    <Label>Sports Facility</Label>
-                                    <span>
-                                        {renderRatingStars('sportsFacility')}
-                                    </span>
-                                </div>
-                                <div className='small  d-flex justify-content-between'>
-                                    <Label>Parking Facility</Label>
-                                    <span>
-                                        {renderRatingStars('parkingFacility')}
-                                    </span>
-                                </div>
-                                <div className='small  d-flex justify-content-between'>
-                                    <Label>Garden of Greenery</Label>
-                                    <span>
-                                        {renderRatingStars('gardenGreenery')}
-                                    </span>
-                                </div>
-                                <div className='small  d-flex justify-content-between'>
-                                    <Label>Shops within Premises</Label>
-                                    <span>
-                                        {renderRatingStars('shopsWithinPremises')}
-                                    </span>
-                                </div>
-                            </div>
-                        </Col>
-                        <Col xs="12" sm="12" md="6" lg="4">
-                            <div className="mb-3 border p-2">
-                                <h5>Project Maintenance</h5>
-                                <div className='small  d-flex justify-content-between'>
-                                    <Label>Construction Quality</Label>
-                                    <span>
-                                        {renderRatingStars('constructionQuality')}
-                                    </span>
-                                </div>
-                                <div className='small  d-flex justify-content-between'>
-                                    <Label>Common Area Maintenance</Label>
-                                    <span>
-                                        {renderRatingStars('commonAreaMaintenance')}
-                                    </span>
-                                </div>
-                                <div className='small  d-flex justify-content-between'>
-                                    <Label>Availability of Service</Label>
-                                    <span>
-                                        {renderRatingStars('availabilityOfService')}
-                                    </span>
-                                </div>
-                                <div className='small  d-flex justify-content-between'>
-                                    <Label>24/7 Security</Label>
-                                    <span>
-                                        {renderRatingStars('security')}
-                                    </span>
-                                </div>
-                            </div>
-                        </Col>
-                    </Row>
-
-                    {/* Comment Input */}
-
-
-                    <FormGroup>
-                        <Label>
-                            Title
-                        </Label>
-                        <Input type='text' placeholder='add title' />
-                    </FormGroup>
-
-                    <FormGroup>
-                        <Label>
-                            Select
-                        </Label>
-                        <Input type='select'>
-                            <option>I own a property here</option>
-                            <option>I currently/used to live here</option>
-                            <option>I am a local agent</option>
-                            <option>I visited the project</option>
-                            <option>Other</option>
-                        </Input>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="comment">Write Review</Label>
-                        <Input
-                            type="textarea"
-                            name="comment"
-                            id="comment"
-                            value={userComment}
-                            onChange={handleCommentInputChange}
-                            placeholder="Tell us what you like & dislike about this project"
-                        />
-                    </FormGroup>
-
-                    {/* Submit Button */}
-                    <Row>
-                        <Col className="text-start">
-                            <Button className='rounded-pill fw-semibold px-4 shadow-sm btn-sm btn btn-danger me-2 btn btn-secondary' onClick={submitUserFeedback}>
-                                Submit
-                            </Button>
-                        </Col>
-                    </Row>
-                </Form>
-            </OffcanvasBody>
-        </Offcanvas>
+  const renderRatingStars = category =>
+    [1, 2, 3, 4, 5].map(i =>
+      <FaStar
+        key={i}
+        className={`me-1 ${i <= ratingCategory[category]
+          ? "text-warning"
+          : "text-muted"}`}
+        onClick={() => handleRatingSelection(category, i)}
+        style={{ cursor: "pointer" }}
+      />
     );
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!reviewerName.trim()) newErrors.reviewerName = "Name is required";
+    if (!reviewerEmail.trim()) newErrors.reviewerEmail = "Email is required";
+    if (!reviewerMobile.trim()) newErrors.reviewerMobile = "Mobile is required";
+    if (!title.trim()) newErrors.title = "Title is required";
+    if (!title.trim()) newErrors.title = "Title is required";
+    if (!title.trim()) newErrors.title = "Title is required";
+    if (!reviewerType) newErrors.reviewerType = "Please select an option";
+    if (!userComment.trim()) newErrors.userComment = "Review is required";
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const submitUserFeedback = async e => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    try {
+      setLoading(true);
+      const data = {
+        projectId,
+        reviewerName,
+        reviewerEmail,
+        reviewerMobile,
+        title,
+        reviewerType,
+        comment: userComment,
+        ratings: ratingCategory
+      };
+      const response = await submitReview(data);
+
+      if (response.success) {
+        setReviewerName("");
+        setReviewerEmail("");
+        setReviewerMobile("");
+        setTitle("");
+        setReviewerType("");
+        setUserComment("");
+        setRatingCategory(initialRatings);
+        setErrors({});
+        setSuccess({ apiSuccess: response.message });
+      } else {
+        setErrors({ apiError: response.message });
+      }
+
+      // Reset form
+
+      //   onToggleVisibility();
+    } catch (error) {
+      setErrors({ apiError: error.message });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const RatingRow = ({ label, field }) =>
+    <div className="small d-flex justify-content-between mb-1">
+      <Label className="mb-0">
+        {label}
+      </Label>
+      <span>
+        {renderRatingStars(field)}
+      </span>
+    </div>;
+
+  return (
+    <Offcanvas
+      isOpen={isVisible}
+      toggle={onToggleVisibility}
+      direction="end"
+      className="w-75"
+    >
+      <OffcanvasHeader toggle={onToggleVisibility}>
+        Rate Your Experience
+      </OffcanvasHeader>
+
+      <OffcanvasBody>
+        <Form onSubmit={submitUserFeedback}>
+          <Row>
+            <Col lg="4">
+              <div className="mb-3 border p-3">
+                <h5>Project Infrastructure</h5>
+                <RatingRow label="Water Supply" field="waterSupply" />
+                <RatingRow label="Main Electricity" field="mainElectricity" />
+                <RatingRow label="Power Backup" field="powerBackup" />
+                <RatingRow label="Sewage Handling" field="sewageHandling" />
+              </div>
+            </Col>
+
+            <Col lg="4">
+              <div className="mb-3 border p-3">
+                <h5>Project Amenities</h5>
+                <RatingRow label="Sports Facility" field="sportsFacility" />
+                <RatingRow label="Parking Facility" field="parkingFacility" />
+                <RatingRow label="Garden & Greenery" field="gardenGreenery" />
+                <RatingRow
+                  label="Shops within Premises"
+                  field="shopsWithinPremises"
+                />
+              </div>
+            </Col>
+
+            <Col lg="4">
+              <div className="mb-3 border p-3">
+                <h5>Project Maintenance</h5>
+                <RatingRow
+                  label="Construction Quality"
+                  field="constructionQuality"
+                />
+                <RatingRow
+                  label="Common Area Maintenance"
+                  field="commonAreaMaintenance"
+                />
+                <RatingRow
+                  label="Availability of Service"
+                  field="availabilityOfService"
+                />
+                <RatingRow label="24/7 Security" field="security" />
+              </div>
+            </Col>
+          </Row>
+
+          {/* Title */}
+          <FormGroup>
+            <Label>Reviewer Name *</Label>
+            <Input
+              type="text"
+              value={reviewerName}
+              invalid={!!errors.reviewerName}
+              onChange={e => setReviewerName(e.target.value)}
+              placeholder="Add reviewer name"
+            />
+            <FormFeedback>
+              {errors.title}
+            </FormFeedback>
+          </FormGroup>
+          <FormGroup>
+            <Label>Reviewer Email *</Label>
+            <Input
+              type="text"
+              value={reviewerEmail}
+              invalid={!!errors.reviewerEmail}
+              onChange={e => setReviewerEmail(e.target.value)}
+              placeholder="Add reviewer email"
+            />
+            <FormFeedback>
+              {errors.title}
+            </FormFeedback>
+          </FormGroup>
+          <FormGroup>
+            <Label>Reviewer Mobile *</Label>
+            <Input
+              type="text"
+              value={reviewerMobile}
+              invalid={!!errors.reviewerMobile}
+              onChange={e => setReviewerMobile(e.target.value)}
+              placeholder="Add reviewer Mobile"
+            />
+            <FormFeedback>
+              {errors.title}
+            </FormFeedback>
+          </FormGroup>
+
+          {/* Title */}
+          <FormGroup>
+            <Label>Title *</Label>
+            <Input
+              type="text"
+              value={title}
+              invalid={!!errors.title}
+              onChange={e => setTitle(e.target.value)}
+              placeholder="Add review title"
+            />
+            <FormFeedback>
+              {errors.title}
+            </FormFeedback>
+          </FormGroup>
+
+          {/* Reviewer Type */}
+          <FormGroup>
+            <Label>Select *</Label>
+            <Input
+              type="select"
+              value={reviewerType}
+              invalid={!!errors.reviewerType}
+              onChange={e => setReviewerType(e.target.value)}
+            >
+              <option value="">Select</option>
+              <option>I own a property here</option>
+              <option>I currently/used to live here</option>
+              <option>I am a local agent</option>
+              <option>I visited the project</option>
+              <option>Other</option>
+            </Input>
+            <FormFeedback>
+              {errors.reviewerType}
+            </FormFeedback>
+          </FormGroup>
+
+          {/* Comment */}
+          <FormGroup>
+            <Label>Write Review *</Label>
+            <Input
+              type="textarea"
+              value={userComment}
+              invalid={!!errors.userComment}
+              onChange={e => setUserComment(e.target.value)}
+              placeholder="Tell us what you like & dislike about this project"
+            />
+            <FormFeedback>
+              {errors.userComment}
+            </FormFeedback>
+          </FormGroup>
+
+          {/* API Error */}
+          {errors.apiError &&
+            <div className="text-danger mb-3">
+              {errors.apiError}
+            </div>}
+          {success.apiSuccess &&
+            <div className="text-success mb-3">
+              {success.apiSuccess}
+            </div>}
+
+          <Button
+            type="submit"
+            color="danger"
+            className="rounded-pill px-4"
+            disabled={loading}
+          >
+            {loading ? <Spinner size="sm" /> : "Submit"}
+          </Button>
+        </Form>
+      </OffcanvasBody>
+    </Offcanvas>
+  );
 };
 
 export default RatingWriteOffCanvas;

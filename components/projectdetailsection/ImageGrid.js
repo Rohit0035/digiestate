@@ -1,135 +1,154 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Container, Row, Col, Button, Modal, ModalBody } from "reactstrap";
 import Image from "next/image";
 import { FaPlay, FaRegImages } from "react-icons/fa";
 import dynamic from "next/dynamic";
-import "bootstrap/dist/css/bootstrap.min.css"; // required for modal
+import { IMAGE_URL } from "../../utils/api-config";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "yet-another-react-lightbox/styles.css";
 
-// Lazy load Lightbox to avoid SSR mismatch
+// Lazy load Lightbox (avoids hydration issue)
 const Lightbox = dynamic(() => import("yet-another-react-lightbox"), {
-  ssr: false,
+  ssr: false
 });
 
-// Dummy images (replace with your own)
-import videoImg from "../../assets/images/dg/pro-2.jpg";
-import img1 from "../../assets/images/dg/pro-2.jpg";
-import img2 from "../../assets/images/dg/pro-2.jpg";
-import img3 from "../../assets/images/dg/pro-2.jpg";
-import img4 from "../../assets/images/dg/pro-2.jpg";
-
-const ImageGrid = () => {
+const ImageGrid = ({ project = {} }) => {
   const [videoModal, setVideoModal] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  const images = [img1, img2, img3, img4];
+  const photos = project?.photosAndVideos?.photos || [];
+  const videos = project?.photosAndVideos?.videos || [];
+
+  const previewPhotos = photos.slice(0, 4);
+  const mainVideo = videos[0]; // first video only
+
+  const slides = useMemo(() => {
+    return photos.map((photo) => ({
+      src: `${IMAGE_URL}${photo}`
+    }));
+  }, [photos]);
+
+  if (!photos.length && !videos.length) return null;
 
   return (
     <section className="py-4">
       <Container>
         <Row className="g-3">
-          {/* Left Large Video */}
-          <Col lg="6" md="12">
-            <div className="position-relative rounded-4 overflow-hidden">
-              <Image
-                src={videoImg.src}
-                alt="Project Video"
-                width={100}
-                height={450}
-                className="img-fluid w-100"
-                style={{ objectFit: "cover", height: "400px" }}
-              />
+          {/* LEFT SIDE VIDEO */}
+          {mainVideo && (
+            <Col lg="6" md="12">
+              <div className="position-relative rounded-4 overflow-hidden">
+                {/* Show first photo as video thumbnail fallback */}
+                <Image
+                  src={`${IMAGE_URL}${photos[0] || ""}`}
+                  alt="Project Video"
+                  width={600}
+                  height={450}
+                  className="img-fluid w-100"
+                  style={{ objectFit: "cover", height: "400px" }}
+                />
 
-              {/* Play Button */}
-              <div
-                onClick={() => setVideoModal(true)}
-                className="position-absolute top-50 start-50 translate-middle bg-white text-st rounded-circle d-flex align-items-center justify-content-center shadow"
-                style={{ width: "60px", height: "60px", cursor: "pointer" }}
-              >
-                <FaPlay size={20} />
-              </div>
-
-              {/* Label */}
-              <div className="position-absolute bottom-0 start-0 m-3">
-                <Button
-                  color="light"
-                  size="sm"
+                {/* Play Button */}
+                <div
                   onClick={() => setVideoModal(true)}
-                  className="rounded-pill shadow-sm fw-semibold d-flex align-items-center gap-1"
+                  className="position-absolute top-50 start-50 translate-middle bg-white text-st rounded-circle d-flex align-items-center justify-content-center shadow"
+                  style={{ width: "60px", height: "60px", cursor: "pointer" }}
                 >
-                  <FaPlay size={12} /> Project Review by Expert
-                </Button>
-              </div>
-            </div>
-          </Col>
+                  <FaPlay size={20} />
+                </div>
 
-          {/* Right 2x2 Images */}
-          <Col lg="6" md="12">
-            <Row className="g-3">
-              {images.map((img, i) => (
-                <Col xs="6" key={i}>
-                  <div
-                    className="position-relative rounded-4 overflow-hidden"
-                    style={{ cursor: "pointer", height: "195px" }}
-                    onClick={() => {
-                      setLightboxIndex(i);
-                      setLightboxOpen(true);
-                    }}
+                <div className="position-absolute bottom-0 start-0 m-3">
+                  <Button
+                    color="light"
+                    size="sm"
+                    onClick={() => setVideoModal(true)}
+                    className="rounded-pill shadow-sm fw-semibold d-flex align-items-center gap-1"
                   >
-                    <Image
-                      src={img.src}
-                      alt={`Gallery ${i + 1}`}
-                      width={400}
-                      height={200}
-                      className="img-fluid w-100"
-                      style={{
-                        objectFit: "cover",
-                        height: "100%",
-                        transition: "transform 0.3s ease",
+                    <FaPlay size={12} /> Project Video
+                  </Button>
+                </div>
+              </div>
+            </Col>
+          )}
+
+          {/* RIGHT SIDE IMAGES */}
+          {previewPhotos.length > 0 && (
+            <Col lg="6" md="12">
+              <Row className="g-3">
+                {previewPhotos.map((photo, i) => (
+                  <Col xs="6" key={i}>
+                    <div
+                      className="position-relative rounded-4 overflow-hidden"
+                      style={{ cursor: "pointer", height: "195px" }}
+                      onClick={() => {
+                        setLightboxIndex(i);
+                        setLightboxOpen(true);
                       }}
-                    />
-                    {i === 3 && (
-                      <div className="position-absolute bottom-0 end-0 m-2">
-                        <Button
-                          color="light"
-                          size="sm"
-                          className="rounded-pill shadow-sm fw-semibold d-flex align-items-center gap-1"
-                        >
-                          <FaRegImages size={14} /> 4 Photos
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                </Col>
-              ))}
-            </Row>
-          </Col>
+                    >
+                      <Image
+                        src={`${IMAGE_URL}${photo}`}
+                        alt={`Gallery ${i + 1}`}
+                        width={400}
+                        height={200}
+                        className="img-fluid w-100"
+                        style={{
+                          objectFit: "cover",
+                          height: "100%"
+                        }}
+                      />
+
+                      {/* Show count badge on last image */}
+                      {i === previewPhotos.length - 1 &&
+                        photos.length > 4 && (
+                          <div className="position-absolute bottom-0 end-0 m-2">
+                            <Button
+                              color="light"
+                              size="sm"
+                              className="rounded-pill shadow-sm fw-semibold d-flex align-items-center gap-1"
+                            >
+                              <FaRegImages size={14} /> {photos.length} Photos
+                            </Button>
+                          </div>
+                        )}
+                    </div>
+                  </Col>
+                ))}
+              </Row>
+            </Col>
+          )}
         </Row>
       </Container>
 
-      {/* Video Modal */}
-      <Modal isOpen={videoModal} toggle={() => setVideoModal(false)} centered size="lg">
-        <ModalBody className="p-0">
-          <div className="ratio ratio-16x9">
-            <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="Project Video"
-              allow="autoplay; fullscreen"
-              className="w-100 h-100"
-            ></iframe>
-          </div>
-        </ModalBody>
-      </Modal>
+      {/* VIDEO MODAL */}
+      {mainVideo && (
+        <Modal
+          isOpen={videoModal}
+          toggle={() => setVideoModal(false)}
+          centered
+          size="lg"
+        >
+          <ModalBody className="p-0">
+            <div className="ratio ratio-16x9">
+              <video
+                src={`${IMAGE_URL}${mainVideo}`}
+                controls
+                autoPlay
+                className="w-100 h-100"
+              />
+            </div>
+          </ModalBody>
+        </Modal>
+      )}
 
-      {/* Lightbox Gallery */}
+      {/* LIGHTBOX */}
       {lightboxOpen && (
         <Lightbox
           open={lightboxOpen}
           close={() => setLightboxOpen(false)}
           index={lightboxIndex}
-          slides={images.map((img) => ({ src: img.src }))}
+          slides={slides}
         />
       )}
     </section>

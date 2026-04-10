@@ -4,7 +4,7 @@ import React from "react";
 import { Card, CardBody } from "reactstrap";
 import banimg from "../../assets/images/adspro.jpg"
 import Link from "next/link";
-const AdsFullBanner = () => {
+const AdsFullBanner = ({ project = {} }) => {
     return (
         <>
 

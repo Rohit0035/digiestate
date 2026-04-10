@@ -40,7 +40,7 @@ const Footer = () => {
                 <Link href="/projects" className="text-muted small text-decoration-none">
                   Projects
                 </Link>
-                <Link href="/blog" className="text-muted small text-decoration-none">
+                <Link href="/blogs" className="text-muted small text-decoration-none">
                   Blog
                 </Link>
                 <Link href="/contact" className="text-muted small text-decoration-none">

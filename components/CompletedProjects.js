@@ -9,53 +9,10 @@ import proimg1 from "../assets/images/dg/pros-1.jpg";
 import proimg2 from "../assets/images/dg/pro-2.jpg";
 import proimg3 from "../assets/images/dg/pro-3.jpg";
 import proimg4 from "../assets/images/dg/pro-4.jpg";
+import ProjectCardHomePage from "./ProjectCardHomePage";
 
-const CompletedProjects = () => {
+const CompletedProjects = ({ completedProjects=[]}) => {
   const swiperRef = useRef(null);
-
-const projects = [
-  {
-    id: 1,
-    img: proimg4,
-    name: "Radha Krishna Apartment",
-    price: "₹42 Lakhs Onwards",
-    size: "3 BHK • 1345 Sqft",
-    location: "Bailey Road, Patna",
-    status: "Completed Project",
-    tag: "RERA Approved",
-  },
-  {
-    id: 2,
-    img: proimg3,
-    name: "Baldev Bhawan",
-    price: "₹38 Lakhs Onwards",
-    size: "2 & 3 BHK",
-    location: "Bailey Road, Patna",
-    status: "Delivered",
-    tag: "Premium",
-  },
-  {
-    id: 3,
-    img: proimg2,
-    name: "Vanasthali Home LLP",
-    price: "₹45 Lakhs Onwards",
-    size: "3 BHK",
-    location: "Boring Road, Patna",
-    status: "Completed & Occupied",
-    tag: "Luxury",
-  },
-  {
-    id: 4,
-    img: proimg1,
-    name: "Abhinav Enclave",
-    price: "₹40 Lakhs Onwards",
-    size: "3 BHK • 1606 Sqft",
-    location: "Kankarbagh, Patna",
-    status: "Project Delivered",
-    tag: "RERA",
-  },
-];
-
 
   return (
     <Container className="my-5 position-relative">
@@ -112,53 +69,10 @@ const projects = [
           1200: { slidesPerView: 4 },
         }}
       >
-        {projects.map((proj, index) => (
+        {completedProjects.map((proj, index) => (
           <SwiperSlide key={proj.id}>
             <div data-aos="zoom-in" data-aos-delay={index * 100}>
-              <Card className="border shadow-sm h-100">
-                <div className="position-relative">
-                  <Image
-                    src={proj.img}
-                    alt={proj.name}
-                    className="img-fluid rounded-top"
-                  />
-
-                  {/* Image Count */}
-                  <div
-                    className="position-absolute top-0 start-0 bg-dark text-white px-2 py-1 small d-flex align-items-center gap-1"
-                    style={{ borderRadius: "0 0.3rem 0.3rem 0" }}
-                  >
-                    <FaRegImage size={13} /> {proj.tag}
-                  </div>
-                </div>
-
-                <CardBody>
-                  <h6 className="fw-semibold mb-1 st-txt-o">
-                    {proj.name}
-                  </h6>
-
-                  <h6 className="fw-bold mb-1">
-                    {proj.price}
-                    <span className="fw-normal text-secondary ms-2">
-                      | {proj.size}
-                    </span>
-                  </h6>
-
-                  <p className="text-muted mb-1 small">{proj.location}</p>
-                  <p className="text-muted mb-2 small">{proj.status}</p>
-
-                  <div className="text-center mt-2">
-                    <Button
-                      href="/project-details"
-                      color="danger"
-                      size="sm"
-                      className="rounded-pill w-100"
-                    >
-                      View Project
-                    </Button>
-                  </div>
-                </CardBody>
-              </Card>
+             <ProjectCardHomePage project={proj} />
             </div>
           </SwiperSlide>
         ))}

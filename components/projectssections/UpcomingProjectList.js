@@ -32,16 +32,16 @@ const projects = [
   }
 ];
 
-const ProjectListingCompleted = ({ completedProjects = [] }) => {
+const UpcomingProjectList = ({ upcomingProjects = [] }) => {
   return (
     <Container className="py-5">
       <Row>
         <Col lg="12">
-          <h3 className="fw-bold mb-4">Completed Projects</h3>
+          <h3 className="fw-bold mb-4">Upcoming Projects</h3>
         </Col>
 
         <Col lg="12">
-          {completedProjects.map(project =>
+          {upcomingProjects.map(project =>
             <ProjectCard key={project.id} project={project} />
           )}
         </Col>
@@ -50,4 +50,4 @@ const ProjectListingCompleted = ({ completedProjects = [] }) => {
   );
 };
 
-export default ProjectListingCompleted;
+export default UpcomingProjectList;

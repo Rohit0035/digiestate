@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
 import "../../assets/styles/project.css"
 import CityPopup from "../../components/CityPopup";
@@ -11,11 +11,39 @@ import ExploreProjects from "../../components/projectssections/ExploreProjects";
 import ExplorePossession from "../../components/projectssections/ExplorePossession";
 import ProjectListingCompleted from "../../components/projectssections/ProjectListingCompleted";
 import OngoingProjectList from "../../components/projectssections/OngoingProjectList";
+import UpcomingProjectList from "../../components/projectssections/UpcomingProjectList";
+import { getProjects } from "../../lib/api";
 const Projects = () => {
 
     // citypopup
     const [modalOpen, setModalOpen] = useState(false);
     const toggleModal = () => setModalOpen(!modalOpen);
+    const [allProjects, setAllProjects] = useState([]);
+    const [ongoingProjects, setOngoingProjects] = useState([]);
+    const [upcomingProjects, setUpcomingProjects] = useState([]);
+    const [completedProjects, setCompletedProjects] = useState([]);
+
+    const fetchProjects = async () => {
+          try {
+            const response = await getProjects();
+      
+            if (response.success === true) {
+              setAllProjects(response.data);
+              setOngoingProjects(response.data.filter((project) => project.status === "Ongoing"));
+              setUpcomingProjects(response.data.filter((project) => project.status === "Upcoming"));
+              setCompletedProjects(response.data.filter((project) => project.status === "Completed"));
+            } else {
+              console.log(response.message);
+            }
+          } catch (error) {
+            console.log(error);
+          } finally {
+          }
+        };
+      
+        useEffect(() => {
+          fetchProjects();
+        }, []);
 
     return (
         <>
@@ -33,9 +61,10 @@ const Projects = () => {
 
             <section className="project-sec-2 bg-light pb-0">
                 <Container>
-                    <Hotspots />
-                    <ProjectListingCompleted />
-                    <OngoingProjectList/>
+                    <Hotspots allProjects={allProjects}/>
+                    <ProjectListingCompleted  completedProjects={completedProjects}/>
+                    <OngoingProjectList ongoingProjects={ongoingProjects}/>
+                    <UpcomingProjectList upcomingProjects={upcomingProjects}/>
                 </Container>
             </section>
 

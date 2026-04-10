@@ -57,28 +57,28 @@ const menuData = [
   // },
   {
     name: "Home",
-    path: "/",
+    path: "/"
   },
   {
     name: "About Us",
-    path: "/about",
+    path: "/about"
   },
   //  {
   //   name: "Services",
   //   path: "/",
   // },
-   {
+  {
     name: "Projects",
-    path: "/projects",
+    path: "/projects"
   },
-   {
+  {
     name: "Blog",
-    path: "/blogs-list",
+    path: "/blogs"
   },
-   {
+  {
     name: "Contact Us",
-    path: "/contact",
-  },
+    path: "/contact"
+  }
 ];
 
 export default menuData;

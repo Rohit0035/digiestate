@@ -7,41 +7,45 @@ import {
   Button,
   Card,
   CardBody,
-  Badge,
+  Badge
 } from "reactstrap";
 import {
   FaMapMarkerAlt,
   FaDownload,
   FaShareAlt,
-  FaInfoCircle,
+  FaInfoCircle
 } from "react-icons/fa";
+import { formatNumber } from "../../utils/formatter";
+import { IMAGE_URL } from "../../utils/api-config";
 
-const ProjectDetailInfo = () => {
+const ProjectDetailInfo = ({ project = {} }) => {
+  if (!project) return null;
+
   return (
     <section className="py-0 mb-5">
       <Container>
         <Card
           className="border shadow-sm rounded-4 p-1 bg-light"
           id="overview"
-          data-aos="fade-up"
         >
           <CardBody>
             <Row className="align-items-start">
               {/* Project Title & Location */}
               <Col lg="10" md="9" sm="12">
                 <h4 className="fw-bold mb-1 text-dark">
-                  Digi Estate Premium Projects
+                  {project?.title}
                 </h4>
 
                 <p className="text-secondary mb-1 d-flex align-items-center gap-1">
                   <FaMapMarkerAlt className="text-st" />
-                  Prime Locations across Bangalore
+                  {project?.location}
                 </p>
 
-                <p className="text-muted small mb-3">
-                  Curated & Marketed by{" "}
-                  <strong>Digi Estate Group</strong>
-                </p>
+                {project?.builder && (
+                  <p className="text-muted small mb-3">
+                    By <strong>{project?.builder}</strong>
+                  </p>
+                )}
               </Col>
 
               {/* Right icons */}
@@ -55,7 +59,7 @@ const ProjectDetailInfo = () => {
                   color="light"
                   className="rounded-pill text-info border small d-flex align-items-center gap-1"
                 >
-                  <FaInfoCircle /> RERA Verified
+                  <FaInfoCircle /> {project?.tag || "RERA Verified"}
                 </Badge>
 
                 <Button
@@ -77,48 +81,53 @@ const ProjectDetailInfo = () => {
                     background:
                       "linear-gradient(90deg, #f8ffff 0%, #ffffff 100%)",
                     border: "1px solid #eef2f4",
-                    position: "relative",
+                    position: "relative"
                   }}
                 >
                   <div>
                     <h5 className="fw-bold text-st mb-1">
-                      ₹ 45 Lac – ₹ 2.5 Cr*
+                      ₹ {formatNumber(project?.priceRange?.min)} 
+                      {project?.priceRange?.max &&
+                        ` – ₹ ${formatNumber(project?.priceRange?.max)}`}
+                      *
                     </h5>
 
                     <p className="mb-1 fw-semibold text-dark">
-                      Apartments | Villas | Plots
+                      {project?.flats?.join(", ")} 
+                      {project?.projectSize && ` | ${project?.projectSize} Sqft`}
                     </p>
 
                     <p className="text-muted small mb-0">
-                      Ready & Upcoming Projects &nbsp;|&nbsp;
-                      <a
-                        href="#"
-                        className="text-st text-decoration-none"
-                      >
-                        View Price Trends
-                      </a>
-                      &nbsp;|&nbsp;
+                      {project?.status} &nbsp;|&nbsp;
                       <span className="text-st fw-semibold">
                         Easy EMI Options
                       </span>
                     </p>
                   </div>
 
-                  {/* Floating brochure box */}
-                  <div
-                    className="position-absolute top-50 end-0 translate-middle-y me-3"
-                    style={{
-                      background: "#fff",
-                      borderRadius: "1rem",
-                      boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-                      padding: "10px 18px",
-                      fontSize: "14px",
-                      cursor: "pointer",
-                    }}
-                  >
-                    <FaDownload className="text-st me-2" />
-                    Project Brochure
-                  </div>
+                  {/* Brochure Download */}
+                  {project?.brochure && (
+                    <a
+                      href={`${IMAGE_URL}${project?.brochure}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="position-absolute top-50 end-0 translate-middle-y me-3 text-decoration-none"
+                    >
+                      <div
+                        style={{
+                          background: "#fff",
+                          borderRadius: "1rem",
+                          boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+                          padding: "10px 18px",
+                          fontSize: "14px",
+                          cursor: "pointer"
+                        }}
+                      >
+                        <FaDownload className="text-st me-2" />
+                        Project Brochure
+                      </div>
+                    </a>
+                  )}
                 </div>
               </Col>
             </Row>
@@ -126,18 +135,26 @@ const ProjectDetailInfo = () => {
             {/* Buttons */}
             <Row className="mt-3">
               <Col md="12" className="d-flex flex-wrap gap-3">
-                <Button
-                  color="light"
-                  className="border border-danger text-st fw-semibold rounded-pill px-4 btn-sm"
-                >
-                  Download Details
-                </Button>
+                {project?.brochure && (
+                  <a
+                    href={`${IMAGE_URL}${project?.brochure}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      color="light"
+                      className="border border-danger text-st fw-semibold rounded-pill px-4 btn-sm"
+                    >
+                      Download Details
+                    </Button>
+                  </a>
+                )}
 
                 <Button
                   color="danger"
                   className="rounded-pill fw-semibold px-4 shadow-sm btn-sm"
                 >
-                  Talk to Digi Estate Expert
+                  Talk to Expert
                 </Button>
               </Col>
             </Row>
